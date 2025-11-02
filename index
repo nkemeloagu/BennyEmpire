@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benny Empire Luxury Shortlets | Lagos, Abuja, Ibadan</title>
+    
+    <!-- FAVICON - Placeholder with BE text --><link rel="icon" href="https://placehold.co/32x32/C29F5F/171717?text=BE" type="image/png">
+    
+    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'be-light': '#f9f9f9', // Bright Off-White Background
+                        'be-dark': '#171717', // Deep Charcoal (Black) Text/Background
+                        'be-accent': '#C29F5F', // Classic Muted Gold Accent
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base styles for premium look */
+        body {
+            background-color: var(--tw-colors-be-light);
+            font-family: 'Inter', 'sans-serif';
+            color: var(--tw-colors-be-dark);
+            scroll-behavior: smooth; 
+        }
+        
+        /* Subtle gold line at the bottom of the sticky header */
+        header {
+            border-bottom: 1px solid rgba(194, 159, 95, 0.2); 
+        }
+
+        .section-header {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.8rem; /* Increased padding */
+            font-size: 2.5rem; 
+        }
+        .section-header::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+            width: 100px; /* Wider separator */
+            height: 4px; /* Thicker separator */
+            background-color: var(--tw-colors-be-accent);
+            border-radius: 9999px;
+            opacity: 0.8; /* Subtle transparency on the gold line */
+        }
+        .card-shadow {
+            /* More defined shadow for elevation */
+            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Dynamic Hover Class for cards and boxes */
+        .card-hover-dynamic {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .card-hover-dynamic:hover {
+            transform: translateY(-8px); /* Deeper lift on hover */
+            box-shadow: 0 25px 35px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -6px rgba(0, 0, 0, 0.08);
+        }
+
+        /* CAROUSEL STYLES */
+        .image-container {
+            position: relative;
+            height: 224px; 
+            overflow: hidden;
+            border-radius: 0.5rem 0.5rem 0 0; 
+        }
+        .carousel-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .carousel-img.active {
+            opacity: 1;
+        }
+
+        /* Accordion Glow Effect */
+        .glow-effect {
+            transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+            border: 1px solid transparent; 
+        }
+        .glow-effect.active {
+            box-shadow: 0 0 20px rgba(194, 159, 95, 0.8), 0 0 10px rgba(194, 159, 95, 0.5);
+            background-color: #ffffff; 
+            border-color: var(--tw-colors-be-accent); /* Gold border when active */
+        }
+        .accordion-header:hover {
+             background-color: var(--tw-colors-be-accent) !important;
+             color: white !important;
+        }
+
+        /* SCROLL ANIMATION CLASSES (for the 'dynamic' feel) */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px); 
+            transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+        }
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* City Filter Active State */
+        .city-filter-active {
+            box-shadow: 0 0 0 3px var(--tw-colors-be-accent);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Header --><header class="sticky top-0 z-50 bg-white shadow-lg">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold tracking-tight text-be-dark">
+                Benny <span class="text-be-accent">Empire</span>
+            </a>
+            <div class="space-x-8 hidden md:flex items-center">
+                <a href="#locations" class="text-sm font-medium hover:text-be-accent transition duration-300">Locations</a>
+                <a href="#featured" class="text-sm font-medium hover:text-be-accent transition duration-300">Apartments</a>
+                <a href="#about-us" class="text-sm font-medium hover:text-be-accent transition duration-300">About Us</a>
+                <a href="#testimonials" class="text-sm font-medium hover:text-be-accent transition duration-300">Stories</a>
+                <a href="#contact-form" class="px-5 py-2 text-sm font-semibold rounded-lg bg-be-accent text-white transition duration-300 transform hover:scale-105">
+                    Book Now
+                </a>
+            </div>
+            <!-- Mobile Menu Button (Hamburger) --><button class="md:hidden p-2 rounded-lg bg-be-accent text-white" aria-label="Toggle navigation">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section (Dark/Black Background with Gold/White Text) --><section id="hero" class="bg-be-dark text-center border-b-2 border-be-accent pt-48 pb-56 bg-cover bg-center">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 scroll-animate">
+                <p class="text-xl text-be-accent font-semibold uppercase tracking-widest mb-4">Welcome to Your Home Away</p>
+                <h1 class="text-6xl sm:text-7xl font-extrabold mb-8 leading-snug text-white">
+                    Experience <span class="text-be-accent">Elite</span> Shortlet Living.
+                </h1>
+                <p class="text-xl sm:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto">
+                    Premium, fully-serviced apartments designed for comfort, security, and style in Nigeria's leading cities: Lagos, Abuja, & Ibadan.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="#featured" class="inline-flex items-center justify-center px-10 py-3 border border-transparent text-lg font-bold rounded-lg shadow-lg text-white bg-be-accent hover:bg-opacity-90 transition duration-300 transform hover:scale-105">
+                        View Properties
+                    </a>
+                    <a href="#contact-form" class="inline-flex items-center justify-center px-10 py-3 border border-white text-lg font-semibold rounded-lg shadow-lg text-white hover:bg-white hover:text-be-dark transition duration-300 transform hover:scale-105">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Bar / Booking Widget (White Background) --><section id="search" class="py-8 bg-white shadow-xl">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 scroll-animate">
+                <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                    <div class="flex-1">
+                        <label for="search-city-select" class="block text-sm font-medium text-gray-700 sr-only">Search by City</label>
+                        <select id="search-city-select" class="mt-1 block w-full pl-3 pr-10 py-3 text-base border-gray-300 rounded-lg focus:outline-none focus:ring-be-accent focus:border-be-accent sm:text-sm shadow-sm border">
+                            <option value="All">All Cities (Lagos, Abuja, Ibadan)</option>
+                            <option value="Lagos">Lagos</option>
+                            <option value="Abuja">Abuja</option>
+                            <option value="Ibadan">Ibadan</option>
+                        </select>
+                    </div>
+                    <!-- Keeping date fields but making search functional on city filter --><div class="flex-1">
+                        <label for="check-in" class="block text-sm font-medium text-gray-700 sr-only">Check-in Date</label>
+                        <input type="date" id="check-in" placeholder="Check-in" class="mt-1 block w-full pl-3 pr-3 py-3 text-base border-gray-300 rounded-lg focus:outline-none focus:ring-be-accent focus:border-be-accent sm:text-sm shadow-sm border">
+                    </div>
+                    <div class="flex-1">
+                        <label for="check-out" class="block text-sm font-medium text-gray-700 sr-only">Check-out Date</label>
+                        <input type="date" id="check-out" placeholder="Check-out" class="mt-1 block w-full pl-3 pr-3 py-3 text-base border-gray-300 rounded-lg focus:outline-none focus:ring-be-accent focus:border-be-accent sm:text-sm shadow-sm border">
+                    </div>
+                    <button id="search-button" class="w-full md:w-auto px-8 py-3 text-base font-bold rounded-lg text-white bg-be-accent hover:bg-opacity-90 transition duration-300 shadow-lg transform hover:scale-105">
+                        Search Now
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Prime Cities (Locations) (Off-White Background) --><section id="locations" class="py-16 sm:py-24 bg-be-light">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-center mb-16 section-header scroll-animate">Our Prime Cities</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Lagos Location Card --><div class="bg-white rounded-xl card-shadow overflow-hidden hover:shadow-xl transition duration-300 border border-gray-100 card-hover-dynamic scroll-animate" data-city-link="Lagos">
+                        <div class="image-container" id="location-lagos-carousel">
+                            <img data-img-index="0" src="https://ik.imagekit.io/vgflfdcic/4750.png" onerror="this.onerror=null; this.src='https://placehold.co/600x350/C29F5F/171717?text=LAGOS';" alt="Lagos Apartment" class="carousel-img active">
+                            <img data-img-index="1" src="https://ik.imagekit.io/vgflfdcic/4741.png" onerror="this.onerror=null; this.src='https://placehold.co/600x350/171717/C29F5F?text=LAGOS';" alt="Lagos Apartment" class="carousel-img">
+                            <img data-img-index="2" src="https://ik.imagekit.io/vgflfdcic/4731.png" onerror="this.onerror=null; this.src='https://placehold.co/600x350/171717/C29F5F?text=LAGOS';" alt="Lagos Apartment" class="carousel-img">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-be-dark mb-2">Lagos - The Commercial Hub</h3>
+                            <p class="text-gray-600 text-sm mb-4">Shortlets in Lekki Phase 1, Ikoyi, Victoria Island. Perfect for business and coastal stays.</p>
+                            <a href="#featured" class="city-link text-sm font-semibold text-be-accent hover:text-be-dark transition" data-city="Lagos">Explore Lagos Listings &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Abuja Location Card --><div class="bg-white rounded-xl card-shadow overflow-hidden hover:shadow-xl transition duration-300 border border-gray-100 card-hover-dynamic scroll-animate" data-city-link="Abuja">
+                        <div class="image-container" id="location-abuja-carousel">
+                            <img data-img-index="0" src="https://ik.imagekit.io/vgflfdcic/4750.png" onerror="this.onerror=null; this.src='https://placehold.co/600x350/C29F5F/171717?text=ABUJA';" alt="Abuja Apartment" class="carousel-img active">
+                            <img data-img-index="1" src="https://ik.imagekit.io/vgflfdcic/4741.png" onerror="this.onerror=null; this.src='https://placehold.co/600x350/171717/C29F5F?text=ABUJA';" alt="Abuja Apartment" class="carousel-img">
+                            <img data-img-index="2" src="https://ik.imagekit.io/vgflfdcic/4731.png" onerror="this.onerror=null; this.src='https://placehold.co/600x350/171717/C29F5F?text=ABUJA';" alt="Abuja Apartment" class="carousel-img">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-be-dark mb-2">Abuja - The Capital Comfort</h3>
+                            <p class="text-gray-600 text-sm mb-4">Exclusive properties in Maitama, Asokoro, Wuse II. Ideal for diplomatic or government travel.</p>
+                            <a href="#featured" class="city-link text-sm font-semibold text-be-accent hover:text-be-dark transition" data-city="Abuja">Explore Abuja Listings &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Ibadan Location Card --><div class="bg-white rounded-xl card-shadow overflow-hidden hover:shadow-xl transition duration-300 border border-gray-100 card-hover-dynamic scroll-animate" data-city-link="Ibadan">
+                        <div class="image-container" id="location-ibadan-carousel">
+                            <img data-img-index="0" src="https://ik.imagekit.io/vgflfdcic/4750.png" onerror="this.onerror=null; this.src='https://placehold.co/600x350/C29F5F/171717?text=IBADAN';" alt="Ibadan Apartment" class="carousel-img active">
+                            <img data-img-index="1" src="https://ik.imagekit.io/vgflfdcic/4741.png" onerror="this.onerror=null; this.src='https://placehold.co/600x350/171717/C29F5F?text=IBADAN';" alt="Ibadan Apartment" class="carousel-img">
+                            <img data-img-index="2" src="https://ik.imagekit.io/vgflfdcic/4731.png" onerror="this.onerror=null; this.src='https://placehold.co/600x350/171717/C29F5F?text=IBADAN';" alt="Ibadan Apartment" class="carousel-img">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-be-dark mb-2">Ibadan - Culture & Tranquility</h3>
+                            <p class="text-gray-600 text-sm mb-4">Modern, peaceful stays in prime residential areas for a relaxing retreat.</p>
+                            <a href="#featured" class="city-link text-sm font-semibold text-be-accent hover:text-be-dark transition" data-city="Ibadan">Explore Ibadan Listings &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Properties (Off-White Background) --><section id="featured" class="py-16 sm:py-24 bg-be-light">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-center mb-16 section-header scroll-animate">Featured Shortlet Properties</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10" id="property-list">
+                    
+                    <!-- Listing 1: Ikeja (Lagos) --><div class="property-card bg-white rounded-xl card-shadow overflow-hidden border border-gray-100 card-hover-dynamic scroll-animate" data-city="Lagos" data-area="Ikeja" data-budget="20k-50k">
+                        <div class="image-container" id="ikeja-carousel">
+                            <img data-img-index="0" src="https://ik.imagekit.io/vgflfdcic/4750.png" onerror="this.onerror=null; this.src='https://placehold.co/800x600/C29F5F/171717?text=IKEJA+APARTMENT+1';" alt="Ikeja Cozy Studio Apartment View 1" class="carousel-img active">
+                            <img data-img-index="1" src="https://ik.imagekit.io/vgflfdcic/4741.png" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=IKEJA+APARTMENT+2';" alt="Ikeja Cozy Studio Apartment View 2" class="carousel-img">
+                            <img data-img-index="2" src="https://ik.imagekit.io/vgflfdcic/4731.png" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=IKEJA+APARTMENT+3';" alt="Ikeja Cozy Studio Apartment View 3" class="carousel-img">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-xs font-semibold uppercase tracking-wider text-be-accent bg-be-accent bg-opacity-10 py-1 px-3 rounded-full">Lagos - Ikeja</span>
+                                <span class="text-2xl font-bold text-be-dark">₦25,000<span class="text-base font-normal text-gray-500">/day</span></span>
+                            </div>
+                            <h3 class="text-xl font-bold text-be-dark mb-3">Cozy 1-Bedroom Studio in Ikeja</h3>
+                            
+                            <!-- Features --><div class="flex items-center space-x-4 text-sm text-gray-500 mb-6">
+                                <span class="flex items-center"><svg class="w-4 h-4 mr-1 text-be-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h2m14 0h2m-6-6h2m-2 12h2M9 7h6m-6 10h6m-3-5a4 4 0 110-8 4 4 0 010 8z"></path></svg> 1 Bed</span>
+                                <span class="flex items-center"><svg class="w-4 h-4 mr-1 text-be-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v2a1 1 0 11-2 0v-2m2 0H9"></path></svg> 1 Bath</span>
+                                <span class="flex items-center"><svg class="w-4 h-4 mr-1 text-be-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2-3 .895-3 2 1.343 2 3 2m0-8a1 1 0 100-2 1 1 0 000 2z"></path></svg> WiFi</span>
+                            </div>
+
+                            <!-- Booking Buttons --><div class="flex space-x-3">
+                                <a href="tel:+2348104863579" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg border border-be-accent text-be-accent hover:bg-be-accent hover:text-white transition duration-200 transform hover:scale-105">
+                                    Call to Book
+                                </a>
+                                <a href="https://wa.me/2348104863579?text=I'm%20interested%20in%20the%20Ikeja%20Studio%20at%20₦25,000/day" target="_blank" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg bg-green-500 text-white hover:bg-green-600 transition duration-200 transform hover:scale-105">
+                                    WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Listing 2: Lekki (Lagos) --><div class="property-card bg-white rounded-xl card-shadow overflow-hidden border border-gray-100 card-hover-dynamic scroll-animate" data-city="Lagos" data-area="Lekki" data-budget="100k+">
+                        <div class="image-container" id="lekki-carousel">
+                            <img data-img-index="0" src="https://ik.imagekit.io/vgflfdcic/4750.png" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT+1';" alt="Lekki Phase 1 Executive Penthouse View 1" class="carousel-img active">
+                            <img data-img-index="1" src="https://ik.imagekit.io/vgflfdcic/4741.png" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT+2';" alt="Lekki Phase 1 Executive Penthouse View 2" class="carousel-img">
+                            <img data-img-index="2" src="https://ik.imagekit.io/vgflfdcic/4731.png" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT+3';" alt="Lekki Phase 1 Executive Penthouse View 3" class="carousel-img">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-xs font-semibold uppercase tracking-wider text-be-accent bg-be-accent bg-opacity-10 py-1 px-3 rounded-full">Lagos - Lekki</span>
+                                <span class="text-2xl font-bold text-be-dark">₦150,000<span class="text-base font-normal text-gray-500">/day</span></span>
+                            </div>
+                            <h3 class="text-xl font-bold text-be-dark mb-3">Lekki Phase 1 Executive Penthouse</h3>
+                            
+                            <!-- Features --><div class="flex items-center space-x-4 text-sm text-gray-500 mb-6">
+                                <span class="flex items-center"><svg class="w-4 h-4 mr-1 text-be-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h2m14 0h2m-6-6h2m-2 12h2M9 7h6m-6 10h6m-3-5a4 4 0 110-8 4 4 0 010 8z"></path></svg> 2 Beds</span>
+                                <span class="flex items-center"><svg class="w-4 h-4 mr-1 text-be-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v2a1 1 0 11-2 0v-2m2 0H9"></path></svg> 2 Baths</span>
+                                <span class="flex items-center"><svg class="w-4 h-4 mr-1 text-be-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2-3 .895-3 2 1.343 2 3 2m0-8a1 1 0 100-2 1 1 0 000 2z"></path></svg> WiFi</span>
+                            </div>
+
+                            <!-- Booking Buttons --><div class="flex space-x-3">
+                                <a href="tel:+2348104863579" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg border border-be-accent text-be-accent hover:bg-be-accent hover:text-white transition duration-200 transform hover:scale-105">
+                                    Call to Book
+                                </a>
+                                <a href="https://wa.me/2348104863579?text=I'm%20interested%20in%20the%20Lekki%20Penthouse%20at%20₦150,000/day" target="_blank" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg bg-green-500 text-white hover:bg-green-600 transition duration-200 transform hover:scale-105">
+                                    WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Listing 3: Maitama (Abuja) --><div class="property-card bg-white rounded-xl card-shadow overflow-hidden border border-gray-100 card-hover-dynamic scroll-animate" data-city="Abuja" data-area="Maitama" data-budget="50k-100k">
+                        <div class="image-container" id="abuja-carousel">
+                            <img data-img-index="0" src="https://ik.imagekit.io/vgflfdcic/4750.png" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=ABUJA+APARTMENT+1';" alt="Maitama Modern 1-Bedroom Studio View 1" class="carousel-img active">
+                            <img data-img-index="1" src="https://ik.imagekit.io/vgflfdcic/4741.png" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=ABUJA+APARTMENT+2';" alt="Maitama Modern 1-Bedroom Studio View 2" class="carousel-img">
+                            <img data-img-index="2" src="https://ik.imagekit.io/vgflfdcic/4731.png" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=ABUJA+APARTMENT+3';" alt="Maitama Modern 1-Bedroom Studio View 3" class="carousel-img">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-xs font-semibold uppercase tracking-wider text-be-accent bg-be-accent bg-opacity-10 py-1 px-3 rounded-full">Abuja - Maitama</span>
+                                <span class="text-2xl font-bold text-be-dark">₦95,000<span class="text-base font-normal text-gray-500">/day</span></span>
+                            </div>
+                            <h3 class="text-xl font-bold text-be-dark mb-3">Maitama Modern 1-Bedroom Studio</h3>
+                            
+                            <!-- Features --><div class="flex items-center space-x-4 text-sm text-gray-500 mb-6">
+                                <span class="flex items-center"><svg class="w-4 h-4 mr-1 text-be-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h2m14 0h2m-6-6h2m-2 12h2M9 7h6m-6 10h6m-3-5a4 4 0 110-8 4 4 0 010 8z"></path></svg> 1 Bed</span>
+                                <span class="flex items-center"><svg class="w-4 h-4 mr-1 text-be-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v2a1 1 0 11-2 0v-2m2 0H9"></path></svg> 1 Bath</span>
+                                <span class="flex items-center"><svg class="w-4 h-4 mr-1 text-be-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg> 24/7 Power</span>
+                            </div>
+
+                            <!-- Booking Buttons --><div class="flex space-x-3">
+                                <a href="tel:+2348104863579" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg border border-be-accent text-be-accent hover:bg-be-accent hover:text-white transition duration-200 transform hover:scale-105">
+                                    Call to Book
+                                </a>
+                                <a href="https://wa.me/2348104863579?text=I'm%20interested%20in%20the%20Maitama%20Studio%20at%20₦95,000/day" target="_blank" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg bg-green-500 text-white hover:bg-green-600 transition duration-200 transform hover:scale-105">
+                                    WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Listing 4: Jericho (Ibadan) --><div class="property-card bg-white rounded-xl card-shadow overflow-hidden border border-gray-100 card-hover-dynamic scroll-animate" data-city="Ibadan" data-area="Jericho" data-budget="100k+">
+                        <div class="image-container" id="ibadan-carousel">
+                            <img data-img-index="0" src="https://ik.imagekit.io/vgflfdcic/4750.png" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=IBADAN+APARTMENT+1';" alt="Jericho Family Suite View 1" class="carousel-img active">
+                            <img data-img-index="1" src="https://ik.imagekit.io/vgflfdcic/4741.png" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=IBADAN+APARTMENT+2';" alt="Jericho Family Suite View 2" class="carousel-img">
+                            <img data-img-index="2" src="https://ik.imagekit.io/vgflfdcic/4731.png" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=IBADAN+APARTMENT+3';" alt="Jericho Family Suite View 3" class="carousel-img">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-xs font-semibold uppercase tracking-wider text-be-accent bg-be-accent bg-opacity-10 py-1 px-3 rounded-full">Ibadan - Jericho</span>
+                                <span class="text-2xl font-bold text-be-dark">₦120,000<span class="text-base font-normal text-gray-500">/day</span></span>
+                            </div>
+                            <h3 class="text-xl font-bold text-be-dark mb-3">Jericho Family Suite (3 Bedrooms)</h3>
+                            
+                            <!-- Features --><div class="flex items-center space-x-4 text-sm text-gray-500 mb-6">
+                                <span class="flex items-center"><svg class="w-4 h-4 mr-1 text-be-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h2m14 0h2m-6-6h2m-2 12h2M9 7h6m-6 10h6m-3-5a4 4 0 110-8 4 4 0 010 8z"></path></svg> 3 Beds</span>
+                                <span class="flex items-center"><svg class="w-4 h-4 mr-1 text-be-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v2a1 1 0 11-2 0v-2m2 0H9"></path></svg> 3 Baths</span>
+                                <span class="flex items-center"><svg class="w-4 h-4 mr-1 text-be-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg> AC</span>
+                            </div>
+
+                            <!-- Booking Buttons --><div class="flex space-x-3">
+                                <a href="tel:+2348104863579" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg border border-be-accent text-be-accent hover:bg-be-accent hover:text-white transition duration-200 transform hover:scale-105">
+                                    Call to Book
+                                </a>
+                                <a href="https://wa.me/2348104863579?text=I'm%20interested%20in%20the%20Ibadan%20Family%20Suite%20at%20₦120,000/day" target="_blank" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg bg-green-500 text-white hover:bg-green-600 transition duration-200 transform hover:scale-105">
+                                    WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="text-center mt-16 scroll-animate">
+                     <a href="#contact-form" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-lg font-semibold rounded-lg shadow-lg text-white bg-be-accent hover:bg-opacity-80 transition duration-300 transform hover:scale-105">
+                        View All Listings
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us (White Background) --><section id="about-us" class="py-16 sm:py-24 bg-white border-t border-b border-gray-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-center mb-16 section-header scroll-animate">The Benny Empire Difference</h2>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    <div class="lg:col-span-2 scroll-animate">
+                        <p class="text-xl text-gray-700 mb-6">
+                            We are more than just a shortlet provider; we are **curators of luxury urban experiences** across Nigeria's most vibrant economic centers. Established with the vision of bridging the gap between temporary accommodation and true five-star living, Benny Empire guarantees security, uninterrupted power, and impeccable service in every booking.
+                        </p>
+                        <p class="text-lg text-gray-600 mb-8">
+                            Every property in our portfolio is meticulously selected and maintained to meet the highest standards of comfort and style. From the moment you book, our dedicated team ensures a seamless experience, allowing you to focus entirely on your business or leisure.
+                        </p>
+
+                        <!-- Goals & Milestones - Now Interactive --><h3 class="text-2xl font-bold text-be-dark mb-4 border-l-4 border-be-accent pl-3">Goals & Milestones</h3>
+                        <div class="space-y-3">
+                            
+                            <!-- Goal 1 --><div class="accordion-item bg-gray-50 rounded-lg overflow-hidden glow-effect" data-target="goal-1">
+                                <button class="accordion-header w-full flex justify-between items-center p-4 text-left font-bold text-be-accent hover:bg-gray-100 transition duration-150" aria-expanded="false" aria-controls="goal-1-content">
+                                    <span>Ultimate Guest Comfort</span>
+                                    <svg class="w-5 h-5 transition-transform duration-300 transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </button>
+                                <div id="goal-1-content" class="accordion-content px-4 pb-4 text-gray-600 hidden">
+                                    To ensure every guest feels the warmth and familiarity of home, coupled with the luxury of a premium hotel experience.
+                                </div>
+                            </div>
+
+                            <!-- Goal 2 --><div class="accordion-item bg-gray-50 rounded-lg overflow-hidden glow-effect" data-target="goal-2">
+                                <button class="accordion-header w-full flex justify-between items-center p-4 text-left font-bold text-be-accent hover:bg-gray-100 transition duration-150" aria-expanded="false" aria-controls="goal-2-content">
+                                    <span>Unrivaled Service</span>
+                                    <svg class="w-5 h-5 transition-transform duration-300 transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </button>
+                                <div id="goal-2-content" class="accordion-content px-4 pb-4 text-gray-600 hidden">
+                                    To maintain a 24/7 dedicated support team ready to assist guests with maintenance, logistics, and local concierge services.
+                                </div>
+                            </div>
+
+                            <!-- Milestone 1 --><div class="accordion-item bg-gray-50 rounded-lg overflow-hidden glow-effect" data-target="goal-3">
+                                <button class="accordion-header w-full flex justify-between items-center p-4 text-left font-bold text-be-accent hover:bg-gray-100 transition duration-150" aria-expanded="false" aria-controls="goal-3-content">
+                                    <span>Key Milestone: High Occupancy</span>
+                                    <svg class="w-5 h-5 transition-transform duration-300 transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </button>
+                                <div id="goal-3-content" class="accordion-content px-4 pb-4 text-gray-600 hidden">
+                                    Achieved a consistent 95% occupancy rate across all operating properties in 2024 due to high guest satisfaction and repeat corporate bookings.
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="hidden lg:block scroll-animate">
+                         <img src="https://ik.imagekit.io/vgflfdcic/Screenshot%202025-11-02%20152843.png" alt="Benny Empire Luxury Apartment Interior" class="rounded-xl shadow-2xl h-full w-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Amenities / Standard of Excellence (Off-White Background) --><section id="amenities" class="py-16 sm:py-24 bg-be-light">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-center mb-16 section-header scroll-animate">Our Standard of Excellence</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 text-center">
+                    
+                    <div class="p-6 rounded-xl bg-white border border-gray-100 card-shadow card-hover-dynamic scroll-animate">
+                        <svg class="w-10 h-10 mx-auto mb-3 text-be-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <h3 class="font-bold text-lg text-be-dark mb-1">Guaranteed Power</h3>
+                        <p class="text-sm text-gray-600">24-hour electricity with generator and inverter backup systems.</p>
+                    </div>
+                    
+                    <div class="p-6 rounded-xl bg-white border border-gray-100 card-shadow card-hover-dynamic scroll-animate">
+                        <svg class="w-10 h-10 mx-auto mb-3 text-be-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 17h18M5 13h14a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2a2 2 0 012-2zM12 5V3m2 4a2 2 0 01-2 2H10a2 2 0 01-2-2V7h4z"></path></svg>
+                        <h3 class="font-bold text-lg text-be-dark mb-1">Fully Furnished</h3>
+                        <p class="text-sm text-gray-600">Move-in ready apartments with modern appliances and stylish decor.</p>
+                    </div>
+
+                    <div class="p-6 rounded-xl bg-white border border-gray-100 card-shadow card-hover-dynamic scroll-animate">
+                        <svg class="w-10 h-10 mx-auto mb-3 text-be-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"></path></svg>
+                        <h3 class="font-bold text-lg text-be-dark mb-1">24/7 Security</h3>
+                        <p class="text-sm text-gray-600">Secure properties with guards, CCTV, and controlled access.</p>
+                    </div>
+                    
+                    <div class="p-6 rounded-xl bg-white border border-gray-100 card-shadow card-hover-dynamic scroll-animate">
+                        <svg class="w-10 h-10 mx-auto mb-3 text-be-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path></svg>
+                        <h3 class="font-bold text-lg text-be-dark mb-1">Guest Support</h3>
+                        <p class="text-sm text-gray-600">Round-the-clock maintenance and responsive guest management.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Customer Success Stories (Testimonials) (White Background for contrast) --><section id="testimonials" class="py-16 sm:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-center mb-16 section-header scroll-animate">What Our Guests Say</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Testimonial 1 --><div class="bg-white p-8 rounded-xl card-shadow border-t-4 border-be-accent card-hover-dynamic scroll-animate">
+                        <div class="text-be-accent mb-4">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 14h-2a2 2 0 01-2-2V7h4v5a2 2 0 01-2 2zm-2 5a1 1 0 100 2h2a1 1 0 100-2h-2zM4 6a1 1 0 011-1h14a1 1 0 110 2H5a1 1 0 01-1-1zm0 8a1 1 0 011-1h14a1 1 0 110 2H5a1 1 0 01-1-1z"></path></svg>
+                        </div>
+                        <p class="text-gray-700 italic mb-6 text-base">"The definition of stress-free living. The 24/7 power, seamless high-speed Wi-Fi, and the responsive team made my entire stay stress-free. Benny Empire is my new standard."</p>
+                        <p class="font-bold text-be-dark">- Mr. David E., <span class="text-sm text-gray-500">Lagos Business Traveler</span></p>
+                    </div>
+
+                    <!-- Testimonial 2 --><div class="bg-white p-8 rounded-xl card-shadow border-t-4 border-be-accent card-hover-dynamic scroll-animate">
+                        <div class="text-be-accent mb-4">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 14h-2a2 2 0 01-2-2V7h4v5a2 2 0 01-2 2zm-2 5a1 1 0 100 2h2a1 1 0 100-2h-2zM4 6a1 1 0 011-1h14a1 1 0 110 2H5a1 1 0 01-1-1zm0 8a1 1 0 011-1h14a1 1 0 110 2H5a1 1 0 01-1-1z"></path></svg>
+                        </div>
+                        <p class="text-gray-700 italic mb-6 text-base">"Perfect blend of luxury and security. Our Abuja booking delivered on every promise: the security was impeccable, and the apartment was tastefully furnished."</p>
+                        <p class="font-bold text-be-dark">- Mrs. Halima M., <span class="text-sm text-gray-500">Abuja Resident</span></p>
+                    </div>
+
+                    <!-- Testimonial 3 --><div class="bg-white p-8 rounded-xl card-shadow border-t-4 border-be-accent card-hover-dynamic scroll-animate">
+                        <div class="text-be-accent mb-4">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 14h-2a2 2 0 01-2-2V7h4v5a2 2 0 01-2 2zm-2 5a1 1 0 100 2h2a1 1 0 100-2h-2zM4 6a1 1 0 011-1h14a1 1 0 110 2H5a1 1 0 01-1-1zm0 8a1 1 0 011-1h14a1 1 0 110 2H5a1 1 0 01-1-1z"></path></svg>
+                        </div>
+                        <p class="text-gray-700 italic mb-6 text-base">"Exceptional value and prime location. For the price, the value provided—especially the consistent air conditioning and clean water supply—is unbeatable."</p>
+                        <p class="font-bold text-be-dark">- Dr. Kinsley O., <span class="text-sm text-gray-500">Ibadan Visitor</span></p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Banner (Gold Background) --><section class="bg-be-accent py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left scroll-animate">
+                <h3 class="text-3xl font-extrabold text-white mb-4 md:mb-0">
+                    Lock in Your Premium Dates.
+                </h3>
+                <a href="tel:+2348104863579" class="inline-flex items-center justify-center px-8 py-3 border border-white text-base font-semibold rounded-lg text-be-accent bg-white hover:bg-gray-100 transition duration-300 transform hover:scale-105">
+                    RESERVE NOW
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact Form (Off-White Background) --><section id="contact-form" class="py-16 sm:py-24 bg-be-light">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-center mb-16 section-header scroll-animate">Book Your Stay</h2>
+                
+                <form id="booking-form" class="bg-white p-8 md:p-12 rounded-xl card-shadow border border-gray-100 scroll-animate">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent" value="+234">
+                        </div>
+                        <div>
+                            <label for="city" class="block text-sm font-medium text-gray-700 mb-1">Preferred City</label>
+                            <select id="city" name="city" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent">
+                                <option value="">Select City</option>
+                                <option value="Lagos">Lagos</option>
+                                <option value="Abuja">Abuja</option>
+                                <option value="Ibadan">Ibadan</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="area" class="block text-sm font-medium text-gray-700 mb-1">Area / Neighborhood</label>
+                            <select id="area" name="area" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent" disabled>
+                                <option value="">Select City First</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="budget" class="block text-sm font-medium text-gray-700 mb-1">Budget Range (₦/Day)</label>
+                            <select id="budget" name="budget" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent">
+                                <option value="">Select Range</option>
+                                <option value="20k-50k">₦20,000 - ₦50,000</option>
+                                <option value="50k-100k">₦50,000 - ₦100,000</option>
+                                <option value="100k+">₦100,000+</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="arrival" class="block text-sm font-medium text-gray-700 mb-1">Arrival Date</label>
+                            <input type="date" id="arrival" name="arrival" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent">
+                        </div>
+                        <div>
+                            <label for="departure" class="block text-sm font-medium text-gray-700 mb-1">Departure Date</label>
+                            <input type="date" id="departure" name="departure" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent">
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Additional Notes / Requirements</label>
+                        <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent"></textarea>
+                    </div>
+                    <div class="mt-8 text-center">
+                        <button type="submit" class="w-full md:w-auto px-10 py-3 text-lg font-bold rounded-lg text-white bg-be-accent hover:bg-opacity-90 transition duration-300 shadow-lg transform hover:scale-105">
+                            Submit Booking Inquiry
+                        </button>
+                    </div>
+                </form>
+                
+                <!-- Submission Message Container (Used instead of alert()) --><div id="form-message" class="mt-4 p-4 text-center rounded-lg hidden"></div>
+                
+                <p class="text-center text-sm text-gray-500 mt-6 scroll-animate">
+                    <span class="font-semibold">Need immediate assistance?</span> Call us at <a href="tel:+2348104863579" class="text-be-accent hover:underline">+234 810 486 3579</a> or chat on WhatsApp.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer (Dark/Black Background) --><footer id="contact" class="bg-be-dark py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+
+                <!-- Brand Info --><div class="col-span-1 md:col-span-2">
+                    <h4 class="text-2xl font-bold text-white mb-4">Benny <span class="text-be-accent">Empire</span></h4>
+                    <p class="text-gray-400 mb-4 text-sm">
+                        Providing top-tier luxury shortlet apartments across Nigeria. Your comfort and security is our highest priority.
+                    </p>
+                </div>
+
+                <!-- Quick Links --><div>
+                    <h4 class="text-lg font-bold mb-4 text-be-light">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#locations" class="text-gray-400 hover:text-be-accent transition">Our Cities</a></li>
+                        <li><a href="#featured" class="text-gray-400 hover:text-be-accent transition">View Apartments</a></li>
+                        <li><a href="#about-us" class="text-gray-400 hover:text-be-accent transition">About Us</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-be-accent transition">Stories</a></li>
+                    </ul>
+                </div>
+
+                <!-- Get in Touch --><div>
+                    <h4 class="text-lg font-bold mb-4 text-be-light">Get in Touch</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="text-gray-400">
+                            <span class="text-be-accent font-medium">Phone:</span> <a href="tel:+2348104863579" class="hover:text-be-accent transition">+234 810 486 3579</a>
+                        </li>
+                        <li class="text-gray-400">
+                            <span class="text-be-accent font-medium">Email:</span> <a href="mailto:bennyhomesofficial@gmail.com" class="hover:text-be-accent transition">bennyhomesofficial@gmail.com</a>
+                        </li>
+                        <li class="flex space-x-3 mt-4">
+                            <!-- Instagram Icon --><a href="https://www.instagram.com/benny__empire" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-be-accent transition" aria-label="Instagram">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.77 1.636 4.98 4.67.12 1.701.171 2.291.171 4.59 0 2.3-.051 2.89-.171 4.59-.21 3.034-1.728 4.522-4.98 4.67-1.266.058-1.646.07-4.85.07s-3.583-.012-4.85-.07c-3.251-.148-4.77-1.636-4.98-4.67-.12-1.701-.171-2.291-.171-4.59s.051-2.89.171-4.59c.21-3.034 1.729-4.522 4.98-4.67 1.267-.058 1.647-.07 4.85-.07zm0 1.84a4.5 4.5 0 100 9 4.5 4.5 0 000-9zm6.204-5.352c-.752 0-1.36.608-1.36 1.36s.608 1.36 1.36 1.36 1.36-.608 1.36-1.36-.608-1.36-1.36-1.36z"></path></svg>
+                            </a>
+                            <!-- WhatsApp Icon --><a href="https://wa.me/2348104863579" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-be-accent transition" aria-label="WhatsApp">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.7.44 3.3.44 3.3l-1.07 3.92 4.01-1.05c0 0 1.5.38 3.01.81 1.71.43 3.49.65 5.5.65 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zM12.04 19.5c-1.46 0-3-.38-4.43-1.09l-.32-.19-3.32.87.89-3.25-.22-.34c-1.1-1.74-1.74-3.77-1.74-5.87 0-4.66 3.79-8.45 8.45-8.45 4.66 0 8.45 3.79 8.45 8.45 0 4.66-3.79 8.45-8.45 8.45h.01zM17.07 14.84c-.24-.12-1.42-.7-1.65-.79-.22-.12-.39-.17-.56.12-.17.29-.65.79-.8 1.2-.17.41-.33.45-.6.3-.24-.12-1.02-.4-1.95-1.19-.74-.6-1.24-1.35-1.65-2.09-.41-.74-.04-1.16.29-1.46.12-.12.24-.26.37-.39.12-.12.17-.22.28-.42.12-.19.06-.39-.02-.56-.12-.17-.56-1.42-.77-1.93-.19-.48-.39-.41-.56-.41h-.44c-.17 0-.41.06-.63.26-.22.24-.84.82-.84 2.01 0 1.19.86 2.33.98 2.59.12.26 1.73 2.65 4.19 3.65 2.21.92 2.66.78 3.12.73.46-.05 1.25-.51 1.42-.99.17-.48.17-.92.12-1.04-.04-.12-.17-.18-.36-.26z"/></svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-12 pt-6 border-t border-gray-800 text-center">
+                <p class="text-sm text-gray-600">&copy; 2024 Benny Empire. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data structure for dynamic city/area selection
+        const cityAreas = {
+            Lagos: ['Ikeja', 'Lekki Phase 1', 'Ikoyi', 'Victoria Island'],
+            Abuja: ['Maitama', 'Asokoro', 'Wuse II', 'Central Area'],
+            Ibadan: ['Jericho', 'Bodija', 'Ring Road', 'Challenge']
+        };
+
+        // CAROUSEL LOGIC
+        const initializeCarousel = (containerId) => {
+            const container = document.getElementById(containerId);
+            if (container) {
+                const images = container.querySelectorAll('.carousel-img');
+                let currentIndex = 0;
+
+                const showImage = (index) => {
+                    images.forEach((img, i) => {
+                        img.classList.remove('active');
+                        if (i === index) {
+                            img.classList.add('active');
+                        }
+                    });
+                };
+
+                const nextImage = () => {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    showImage(currentIndex);
+                };
+
+                showImage(currentIndex);
+                setInterval(nextImage, 4000);
+            }
+        };
+
+        // PROPERTY FILTERING LOGIC
+        const filterProperties = (city, scrollTo) => {
+            const propertyList = document.getElementById('property-list');
+            const cards = propertyList.querySelectorAll('.property-card');
+            
+            // Highlight the active city card link/area
+            document.querySelectorAll('.city-link').forEach(link => {
+                if (link.dataset.city === city) {
+                    link.classList.add('font-extrabold', 'city-filter-active');
+                } else {
+                    link.classList.remove('font-extrabold', 'city-filter-active');
+                }
+            });
+
+            cards.forEach(card => {
+                const cardCity = card.getAttribute('data-city');
+                
+                if (city === 'All' || cardCity === city) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            if (scrollTo) {
+                 // Scroll smoothly to the property list section
+                document.getElementById('featured').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        };
+
+        // Dynamic Form Logic (Area/Neighborhood)
+        const updateAreaDropdown = () => {
+            const citySelect = document.getElementById('city');
+            const areaSelect = document.getElementById('area');
+            const selectedCity = citySelect.value;
+
+            areaSelect.innerHTML = '<option value="">Select Area</option>';
+            areaSelect.disabled = true;
+
+            if (selectedCity && cityAreas[selectedCity]) {
+                cityAreas[selectedCity].forEach(area => {
+                    const option = document.createElement('option');
+                    option.value = area;
+                    option.textContent = area;
+                    areaSelect.appendChild(option);
+                });
+                areaSelect.disabled = false;
+            }
+        };
+
+        // SCROLL ANIMATION (Intersection Observer)
+        const setupScrollAnimations = () => {
+            const elements = document.querySelectorAll('.scroll-animate');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                rootMargin: '0px',
+                threshold: 0.1 
+            });
+
+            elements.forEach(el => observer.observe(el));
+        };
+        
+        // ACCORDION LOGIC
+        const setupAccordions = () => {
+             const accordionHeaders = document.querySelectorAll('.accordion-header');
+             accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const accordionItem = header.closest('.accordion-item');
+                    const content = accordionItem.querySelector('.accordion-content');
+                    const icon = header.querySelector('svg');
+
+                    const isActive = accordionItem.classList.contains('active');
+
+                    // Close all others
+                    document.querySelectorAll('.accordion-item').forEach(item => {
+                        item.classList.remove('active');
+                        item.querySelector('.accordion-content').classList.add('hidden');
+                        item.querySelector('svg').classList.remove('rotate-180');
+                    });
+
+                    // Open the clicked one if it wasn't already active
+                    if (!isActive) {
+                        accordionItem.classList.add('active');
+                        content.classList.remove('hidden');
+                        icon.classList.add('rotate-180');
+                    }
+                });
+            });
+        };
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Initialize Carousels
+            initializeCarousel('ikeja-carousel');
+            initializeCarousel('lekki-carousel');
+            initializeCarousel('abuja-carousel');
+            initializeCarousel('ibadan-carousel'); 
+            initializeCarousel('location-lagos-carousel');
+            initializeCarousel('location-abuja-carousel');
+            initializeCarousel('location-ibadan-carousel');
+
+            // 2. Setup Scroll Animations
+            setupScrollAnimations();
+            
+            // 3. Setup Accordions
+            setupAccordions();
+
+            // 4. Setup City Links (Explore Listings)
+            document.querySelectorAll('.city-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const city = e.target.getAttribute('data-city');
+
+                    // Set the search bar to the chosen city for visual consistency
+                    document.getElementById('search-city-select').value = city;
+                    
+                    // Filter the properties and scroll to the featured section
+                    filterProperties(city, true);
+                });
+            });
+
+            // 5. Setup Search Button (Filtering)
+            document.getElementById('search-button').addEventListener('click', () => {
+                const city = document.getElementById('search-city-select').value;
+                filterProperties(city, true);
+            });
+
+            // 6. Dynamic Form Dropdown Setup
+            const citySelect = document.getElementById('city');
+            citySelect.addEventListener('change', updateAreaDropdown);
+
+
+            // 7. CONTACT FORM SUBMISSION HANDLER
+            const form = document.getElementById('booking-form');
+            const messageContainer = document.getElementById('form-message');
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+                
+                console.log('Form Submission Data:', data);
+                
+                // Show success message
+                messageContainer.classList.remove('hidden', 'bg-red-100', 'text-red-800');
+                messageContainer.classList.add('bg-green-100', 'text-green-800');
+                messageContainer.innerHTML = `<strong>Success!</strong> Inquiry for ${data.city} (${data.area}) submitted. We will contact you at ${data.email} shortly.`;
+                
+                // Reset form and re-disable area dropdown
+                form.reset();
+                document.getElementById('area').disabled = true;
+                document.getElementById('area').innerHTML = '<option value="">Select City First</option>';
+
+                // Hide the message after 5 seconds
+                setTimeout(() => {
+                    messageContainer.classList.add('hidden');
+                }, 5000);
+            });
+
+        });
+    </script>
+</body>
+</html>
+
+
