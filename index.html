@@ -78,7 +78,7 @@
             overflow: hidden;
             border-radius: 0.5rem 0.5rem 0 0; 
         }
-        .carousel-img {
+        .carousel-media { /* <-- Renamed from .carousel-img */
             position: absolute;
             top: 0;
             left: 0;
@@ -88,7 +88,7 @@
             opacity: 0;
             transition: opacity 1s ease-in-out;
         }
-        .carousel-img.active {
+        .carousel-media.active { /* <-- Renamed from .carousel-img.active */
             opacity: 1;
         }
 
@@ -105,6 +105,29 @@
         .accordion-header:hover {
              background-color: var(--tw-colors-be-accent) !important;
              color: white !important;
+        }
+
+        /* NEW STYLES FOR NAV BUTTONS */
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border-radius: 9999px;
+            padding: 0.5rem; /* 8px */
+            transition: background-color 0.2s ease;
+            cursor: pointer;
+        }
+        .carousel-nav:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .carousel-nav.prev {
+            left: 0.5rem; /* 8px */
+        }
+        .carousel-nav.next {
+            right: 0.5rem; /* 8px */
         }
 
         /* SCROLL ANIMATION CLASSES (for the 'dynamic' feel) */
@@ -336,22 +359,30 @@
                     
                     <!-- Listing 4: Admiralty, Lekki (Lagos) --><div class="property-card bg-white rounded-xl card-shadow overflow-hidden border border-gray-100 card-hover-dynamic scroll-animate" data-city="Lagos" data-area="Lekki" data-budget="100k+">
                         <div class="image-container" id="lekki-cinema-carousel">
-                            <img data-img-index="0" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0043.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT';" alt="Lekki Apartment View 1" class="carousel-img active">
-                            <img data-img-index="1" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0052.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT';" alt="Lekki Apartment View 2" class="carousel-img">
-                            <img data-img-index="2" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0042.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT';" alt="Lekki Apartment View 3" class="carousel-img">
-                            <img data-img-index="3" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0040.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT';" alt="Lekki Apartment View 4" class="carousel-img">
-                            <img data-img-index="4" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0045.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT';" alt="Lekki Apartment View 5" class="carousel-img">
-                            <img data-img-index="5" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0048.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT';" alt="Lekki Apartment View 6" class="carousel-img">
-                            <img data-img-index="6" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0054.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT';" alt="Lekki Apartment View 7" class="carousel-img">
-                            <img data-img-index="7" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0051.jpg" onerror="this.onerror=null; this.src='https:"https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT'; alt="Lekki Apartment View 8" class="carousel-img">
-                            <img data-img-index="8" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0041.jpg" onerror="this.onerror=null; this.src='https:"https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT'; alt="Lekki Apartment View 9" class="carousel-img">
-                            <img data-img-index="9" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0049.jpg" onerror="this.onerror=null; this.src='https:"https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT'; alt="Lekki Apartment View 10" class="carousel-img">
-                            <img data-img-index="10" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0047.jpg" onerror="this.onerror=null; this.src='https:"https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT'; alt="Lekki Apartment View 11" class="carousel-img">
-                            <img data-img-index="11" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0039.jpg" onerror="this.onerror=null; this.src='https:"https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT'; alt="Lekki Apartment View 12" class="carousel-img">
-                            <img data-img-index="12" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0046.jpg" onerror="this.onerror=null; this.src='https:"https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT'; alt="Lekki Apartment View 13" class="carousel-img">
-                            <img data-img-index="13" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0044.jpg" onerror="this.onerror=null; this.src='https:"https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT'; alt="Lekki Apartment View 14" class="carousel-img">
-                            <img data-img-index="14" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0053.jpg" onerror="this.onerror=null; this.src='https:"https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT'; alt="Lekki Apartment View 15" class="carousel-img">
-                            <img data-img-index="15" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0050.jpg" onerror="this.onerror=null; this.src='https:"https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT'; alt="Lekki Apartment View 16" class="carousel-img">
+                            <img data-img-index="0" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0043.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT';" alt="Lekki Apartment View 1" class="carousel-media active">
+                            <img data-img-index="1" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0052.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT';" alt="Lekki Apartment View 2" class="carousel-media">
+                            <img data-img-index="2" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0042.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT';" alt="Lekki Apartment View 3" class="carousel-media">
+                            <img data-img-index="3" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0040.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT';" alt="Lekki Apartment View 4" class="carousel-media">
+                            <img data-img-index="4" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0045.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT';" alt="Lekki Apartment View 5" class="carousel-media">
+                            <img data-img-index="5" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0048.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT';" alt="Lekki Apartment View 6" class="carousel-media">
+                            <img data-img-index="6" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0054.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT';" alt="Lekki Apartment View 7" class="carousel-media">
+                            <img data-img-index="7" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0051.jpg" onerror="this.onerror=null; this.src='https:"https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT'; alt="Lekki Apartment View 8" class="carousel-media">
+                            <img data-img-index="8" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0041.jpg" onerror="this.onerror=null; this.src='https:"https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT'; alt="Lekki Apartment View 9" class="carousel-media">
+                            <img data-img-index="9" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0049.jpg" onerror="this.onerror=null; this.src='https:"https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT'; alt="Lekki Apartment View 10" class="carousel-media">
+                            <img data-img-index="10" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0047.jpg" onerror="this.onerror=null; this.src='https:"https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT'; alt="Lekki Apartment View 11" class="carousel-media">
+                            <img data-img-index="11" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0039.jpg" onerror="this.onerror=null; this.src='https:"https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT'; alt="Lekki Apartment View 12" class="carousel-media">
+                            <img data-img-index="12" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0046.jpg" onerror="this.onerror=null; this.src='https:"https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT'; alt="Lekki Apartment View 13" class="carousel-media">
+                            <img data-img-index="13" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0044.jpg" onerror="this.onerror=null; this.src='https:"https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT'; alt="Lekki Apartment View 14" class="carousel-media">
+                            <img data-img-index="14" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0053.jpg" onerror="this.onerror=null; this.src='https:"https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT'; alt="Lekki Apartment View 15" class="carousel-media">
+                            <img data-img-index="15" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0050.jpg" onerror="this.onerror=null; this.src='https:"https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT'; alt="Lekki Apartment View 16" class="carousel-media">
+                        
+                            <!-- ADDED NAV BUTTONS -->
+                            <button class="carousel-nav prev" data-carousel-id="lekki-cinema-carousel" data-direction="-1" aria-label="Previous">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                            </button>
+                            <button class="carousel-nav next" data-carousel-id="lekki-cinema-carousel" data-direction="1" aria-label="Next">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </button>
                         </div>
                         <div class="p-6">
                             <div class="flex justify-between items-center mb-3">
@@ -380,19 +411,33 @@
 
                     <!-- Listing 5: One Bedroom Loft, Lekki (Lagos) --><div class="property-card bg-white rounded-xl card-shadow overflow-hidden border border-gray-100 card-hover-dynamic scroll-animate" data-city="Lagos" data-area="Lekki" data-budget="100k+">
                         <div class="image-container" id="lekki-loft-carousel">
-                            <img data-img-index="0" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0059.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 1" class="carousel-img active">
-                            <img data-img-index="1" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0055.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 2" class="carousel-img">
-                            <img data-img-index="2" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0058.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 3" class="carousel-img">
-                            <img data-img-index="3" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0056.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 4" class="carousel-img">
-                            <img data-img-index="4" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0057.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 5" class="carousel-img">
-                            <img data-img-index="5" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0061.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 6" class="carousel-img">
-                            <img data-img-index="6" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0060.jpg" onerror="this.onerror=null; this.src='httpsimg-index="7" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0062.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 8" class="carousel-img">
-                            <img data-img-index="8" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0066.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 9" class="carousel-img">
-                            <img data-img-index="9" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0063.jpg" onerror="this.onerror=null; this.src='httpsServices/placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 10" class="carousel-img">
-                            <img data-img-index="10" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0065.jpg" onerror="this.onerror=null; this.src='httpsimg-index="11" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0067.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 12" class="carousel-img">
-                            <img data-img-index="12" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0069.jpg" onerror="this.onerror=null; this.src='httpsimg-index="13" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0068.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 14" class="carousel-img">
-                            <img data-img-index="14" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0064.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 15" class="carousel-img">
-                            <!-- Note: I skipped the video as this carousel is set up for images, but I can add it if you prefer! -->
+                            <!-- ADDED VIDEO AS FIRST ITEM -->
+                            <video data-media-index="0" src="https://ik.imagekit.io/vgflfdcic/Lagos5/VID-20251102-WA0045.mp4" autoplay loop muted playsinline class="carousel-media active w-full h-full object-cover"></video>
+                            
+                            <!-- UPDATED IMAGES -->
+                            <img data-media-index="1" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0059.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 1" class="carousel-media"> <!-- 'active' removed, class changed, index updated -->
+                            <img data-media-index="2" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0055.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 2" class="carousel-media"> <!-- class changed, index updated -->
+                            <img data-media-index="3" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0058.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 3" class="carousel-media"> <!-- ...for all images -->
+                            <img data-media-index="4" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0056.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 4" class="carousel-media">
+                            <img data-media-index="5" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0057.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 5" class="carousel-media">
+                            <img data-media-index="6" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0061.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 6" class="carousel-media">
+                            <img data-media-index="7" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0060.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT'; alt="Lekki Loft Apartment View 7" class="carousel-media">
+                            <img data-media-index="8" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0062.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 8" class="carousel-media">
+                            <img data-media-index="9" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0066.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 9" class="carousel-media">
+                            <img data-media-index="10" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0063.jpg" onerror="this.onerror=null; this.src='httpsServices/placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 10" class="carousel-media">
+                            <img data-media-index="11" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0065.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT'; alt="Lekki Loft Apartment View 11" class="carousel-media">
+                            <img data-media-index="12" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0067.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 12" class="carousel-media">
+                            <img data-media-index="13" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0069.jpg" onerror="this.onerror=null; this.src='httpss://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT'; alt="Lekki Loft Apartment View 13" class="carousel-media">
+                            <img data-media-index="14" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0068.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 14" class="carousel-media">
+                            <img data-media-index="15" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0064.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 15" class="carousel-media">
+                            
+                            <!-- ADDED NAV BUTTONS -->
+                            <button class="carousel-nav prev" data-carousel-id="lekki-loft-carousel" data-direction="-1" aria-label="Previous">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                            </button>
+                            <button class="carousel-nav next" data-carousel-id="lekki-loft-carousel" data-direction="1" aria-label="Next">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </button>
                         </div>
                         <div class="p-6">
                             <div class="flex justify-between items-center mb-3">
@@ -628,7 +673,7 @@
                 
                 <p class="text-center text-sm text-gray-500 mt-6 scroll-animate">
                     <span class="font-semibold">Need immediate assistance?</span> Call us at <a href="tel:+2348104863579" class="text-be-accent hover:underline">+234 810 486 3579</a> or chat on WhatsApp.
-                </p>
+                </Two-Bedroom>
             </div>
         </section>
 
@@ -683,7 +728,7 @@
     </footer>
 
     <script>
-        // Data structure for dynamic city/area selection
+        <!-- Data structure for dynamic city/area selection -->
         const cityAreas = {
             Lagos: ['Ikeja', 'Lekki Phase 1', 'Ikoyi', 'Victoria Island'],
             Abuja: ['Maitama', 'Asokoro', 'Wuse II', 'Central Area'],
@@ -694,25 +739,41 @@
         const initializeCarousel = (containerId) => {
             const container = document.getElementById(containerId);
             if (container) {
-                const images = container.querySelectorAll('.carousel-img');
-                let currentIndex = 0;
+                // Select both images and videos
+                const media = container.querySelectorAll('.carousel-media');
+                if (media.length === 0) return; // No media to cycle
 
-                const showImage = (index) => {
-                    images.forEach((img, i) => {
-                        img.classList.remove('active');
+                let currentIndex = 0;
+                let autoplay = setInterval(nextImage, 4000); // Store interval
+
+                const showMedia = (index) => {
+                    media.forEach((item, i) => {
+                        item.classList.remove('active');
                         if (i === index) {
-                            img.classList.add('active');
+                            item.classList.add('active');
                         }
                     });
                 };
 
-                const nextImage = () => {
-                    currentIndex = (currentIndex + 1) % images.length;
-                    showImage(currentIndex);
+                function nextImage() {
+                    currentIndex = (currentIndex + 1) % media.length;
+                    showMedia(currentIndex);
                 };
 
-                showImage(currentIndex);
-                setInterval(nextImage, 4000);
+                // Find and attach listeners to nav buttons
+                const navButtons = document.querySelectorAll(`.carousel-nav[data-carousel-id="${containerId}"]`);
+                navButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        clearInterval(autoplay); // Stop autoplay on manual click
+                        const direction = parseInt(button.dataset.direction);
+                        // Calculate new index, wrapping around correctly
+                        currentIndex = (currentIndex + direction + media.length) % media.length;
+                        showMedia(currentIndex);
+                    });
+                });
+
+                // Initial show
+                showMedia(currentIndex);
             }
         };
 
@@ -884,8 +945,4 @@
     </script>
 </body>
 </html>
-
-
-
-
 
