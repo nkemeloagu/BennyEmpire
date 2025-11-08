@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Benny Empire Luxury Shortlets | Lagos, Abuja, Ibadan</title>
     
-    <!-- FAVICON - Placeholder with BE text --><link rel="icon" href="https://placehold.co/32x32/C29F5F/171717?text=BE" type="image/png">
+    <!-- FAVICON --><link rel="icon" href="https://ik.imagekit.io/vgflfdcic/Screenshot%202025-11-02%20152843.png" type="image/png">
     
     <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
     
-    <script>
+    <!-- Tailwind Config --><script>
         tailwind.config = {
             theme: {
                 extend: {
@@ -25,7 +25,8 @@
             }
         }
     </script>
-    <style>
+    
+    <!-- Custom Styles --><style>
         /* Base styles for premium look */
         body {
             background-color: var(--tw-colors-be-light);
@@ -77,8 +78,9 @@
             height: 224px; 
             overflow: hidden;
             border-radius: 0.5rem 0.5rem 0 0; 
+            background-color: #111; /* Dark bg for media */
         }
-        .carousel-media { /* <-- Renamed from .carousel-img */
+        .carousel-media {
             position: absolute;
             top: 0;
             left: 0;
@@ -86,11 +88,46 @@
             height: 100%;
             object-fit: cover;
             opacity: 0;
-            transition: opacity 1s ease-in-out;
+            transition: opacity 0.7s ease-in-out;
         }
-        .carousel-media.active { /* <-- Renamed from .carousel-img.active */
+        .carousel-media.active {
             opacity: 1;
         }
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.4);
+            color: white;
+            border-radius: 50%;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: background-color 0.2s;
+            display: none; /* Hidden by default */
+        }
+        .carousel-nav:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        /* Only show arrows on carousels that have them */
+        .has-carousel-nav .carousel-nav {
+            display: flex;
+        }
+        .carousel-nav.prev {
+            left: 0.5rem;
+        }
+        .carousel-nav.next {
+            right: 0.5rem;
+        }
+        /* Hide video controls */
+        .carousel-media video {
+            pointer-events: none;
+        }
+
 
         /* Accordion Glow Effect */
         .glow-effect {
@@ -98,36 +135,14 @@
             border: 1px solid transparent; 
         }
         .glow-effect.active {
+            /* Only apply glow, not white background */
             box-shadow: 0 0 20px rgba(194, 159, 95, 0.8), 0 0 10px rgba(194, 159, 95, 0.5);
-            /* background-color: #ffffff;  <-- REMOVED THIS LINE TO PREVENT WHITE FLASH */
+            /* background-color: #ffffff; */ /* <-- REMOVED THIS */
             border-color: var(--tw-colors-be-accent); /* Gold border when active */
         }
         .accordion-header:hover {
              background-color: var(--tw-colors-be-accent) !important;
              color: white !important;
-        }
-
-        /* NEW STYLES FOR NAV BUTTONS */
-        .carousel-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 10;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border-radius: 9999px;
-            padding: 0.5rem; /* 8px */
-            transition: background-color 0.2s ease;
-            cursor: pointer;
-        }
-        .carousel-nav:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-        .carousel-nav.prev {
-            left: 0.5rem; /* 8px */
-        }
-        .carousel-nav.next {
-            right: 0.5rem; /* 8px */
         }
 
         /* SCROLL ANIMATION CLASSES (for the 'dynamic' feel) */
@@ -141,15 +156,12 @@
             transform: translateY(0);
         }
         
-        /* City Filter Active State */
-        .city-filter-active {
-            box-shadow: 0 0 0 3px var(--tw-colors-be-accent);
-        }
     </style>
 </head>
-<body>
+<body class="bg-be-light">
 
-    <!-- Navigation Header --><header class="sticky top-0 z-50 bg-white shadow-lg">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white shadow-lg">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <a href="#" class="text-3xl font-bold tracking-tight text-be-dark">
                 Benny <span class="text-be-accent">Empire</span>
@@ -163,14 +175,18 @@
                     Book Now
                 </a>
             </div>
-            <!-- Mobile Menu Button (Hamburger) --><button class="md:hidden p-2 rounded-lg bg-be-accent text-white" aria-label="Toggle navigation">
+            
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden p-2 rounded-lg bg-be-accent text-white" aria-label="Toggle navigation">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
         </nav>
     </header>
 
     <main>
-        <!-- Hero Section (Dark/Black Background with Gold/White Text) --><section id="hero" class="bg-be-dark text-center border-b-2 border-be-accent pt-48 pb-56 bg-cover bg-center">
+        
+        <!-- Hero Section -->
+        <section id="hero" class="bg-be-dark text-center border-b-2 border-be-accent pt-48 pb-56">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 scroll-animate">
                 <p class="text-xl text-be-accent font-semibold uppercase tracking-widest mb-4">Welcome to Your Home Away</p>
                 <h1 class="text-6xl sm:text-7xl font-extrabold mb-8 leading-snug text-white">
@@ -190,7 +206,8 @@
             </div>
         </section>
 
-        <!-- Search Bar / Booking Widget (White Background) --><section id="search" class="py-8 bg-white shadow-xl">
+        <!-- Search Section -->
+        <section id="search" class="py-8 bg-white shadow-xl">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 scroll-animate">
                 <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
                     <div class="flex-1">
@@ -202,7 +219,9 @@
                             <option value="Ibadan">Ibadan</option>
                         </select>
                     </div>
-                    <!-- Keeping date fields but making search functional on city filter --><div class="flex-1">
+                    
+                    <!-- Check-in/Check-out -->
+                    <div class="flex-1">
                         <label for="check-in" class="block text-sm font-medium text-gray-700 sr-only">Check-in Date</label>
                         <input type="date" id="check-in" placeholder="Check-in" class="mt-1 block w-full pl-3 pr-3 py-3 text-base border-gray-300 rounded-lg focus:outline-none focus:ring-be-accent focus:border-be-accent sm:text-sm shadow-sm border">
                     </div>
@@ -217,15 +236,17 @@
             </div>
         </section>
 
-        <!-- Our Prime Cities (Locations) (Off-White Background) --><section id="locations" class="py-16 sm:py-24 bg-be-light">
+        <!-- Locations Section -->
+        <section id="locations" class="py-16 sm:py-24 bg-be-light">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-4xl font-extrabold text-center mb-16 section-header scroll-animate">Our Prime Cities</h2>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     
-                    <!-- Lagos Location Card --><div class="bg-white rounded-xl card-shadow overflow-hidden hover:shadow-xl transition duration-300 border border-gray-100 card-hover-dynamic scroll-animate" data-city-link="Lagos">
+                    <!-- Lagos Card -->
+                    <div class="bg-white rounded-xl card-shadow overflow-hidden hover:shadow-xl transition duration-300 border border-gray-100 card-hover-dynamic scroll-animate" data-city-link="Lagos">
                         <div class="image-container" id="location-lagos-carousel">
-                            <img src="https://ik.imagekit.io/vgflfdcic/national-theatre_standard.jpg" onerror="this.onerror=null; this.src='https://placehold.co/600x350/C29F5F/171717?text=LAGOS';" alt="Lagos National Theatre" class="w-full h-full object-cover">
+                            <img data-img-index="0" src="https://ik.imagekit.io/vgflfdcic/national-theatre_standard.jpg" onerror="this.onerror=null; this.src='https://placehold.co/600x350/C29F5F/171717?text=LAGOS';" alt="Lagos Apartment" class="carousel-media active">
                         </div>
                         <div class="p-6">
                             <h3 class="text-2xl font-bold text-be-dark mb-2">Lagos - The Commercial Hub</h3>
@@ -234,9 +255,10 @@
                         </div>
                     </div>
 
-                    <!-- Abuja Location Card --><div class="bg-white rounded-xl card-shadow overflow-hidden hover:shadow-xl transition duration-300 border border-gray-100 card-hover-dynamic scroll-animate" data-city-link="Abuja">
+                    <!-- Abuja Card -->
+                    <div class="bg-white rounded-xl card-shadow overflow-hidden hover:shadow-xl transition duration-300 border border-gray-100 card-hover-dynamic scroll-animate" data-city-link="Abuja">
                         <div class="image-container" id="location-abuja-carousel">
-                            <img src="https://ik.imagekit.io/vgflfdcic/Abuja.jpg" onerror="this.onerror=null; this.src='https://placehold.co/600x350/C29F5F/171717?text=ABUJA';" alt="Abuja City View" class="w-full h-full object-cover">
+                            <img data-img-index="0" src="https://ik.imagekit.io/vgflfdcic/Abuja.jpg" onerror="this.onerror=null; this.src='https://placehold.co/600x350/C29F5F/171717?text=ABUJA';" alt="Abuja Apartment" class="carousel-media active">
                         </div>
                         <div class="p-6">
                             <h3 class="text-2xl font-bold text-be-dark mb-2">Abuja - The Capital Comfort</h3>
@@ -245,9 +267,10 @@
                         </div>
                     </div>
 
-                    <!-- Ibadan Location Card --><div class="bg-white rounded-xl card-shadow overflow-hidden hover:shadow-xl transition duration-300 border border-gray-100 card-hover-dynamic scroll-animate" data-city-link="Ibadan">
+                    <!-- Ibadan Card -->
+                    <div class="bg-white rounded-xl card-shadow overflow-hidden hover:shadow-xl transition duration-300 border border-gray-100 card-hover-dynamic scroll-animate" data-city-link="Ibadan">
                         <div class="image-container" id="location-ibadan-carousel">
-                            <img src="https://ik.imagekit.io/vgflfdcic/Ibadan.jpg" onerror="this.onerror=null; this.src='https://placehold.co/600x350/C29F5F/171717?text=IBADAN';" alt="Ibadan City View" class="w-full h-full object-cover">
+                            <img data-img-index="0" src="https://ik.imagekit.io/vgflfdcic/Ibadan.jpg" onerror="this.onerror=null; this.src='https://placehold.co/600x350/C29F5F/171717?text=IBADAN';" alt="Ibadan Apartment" class="carousel-media active">
                         </div>
                         <div class="p-6">
                             <h3 class="text-2xl font-bold text-be-dark mb-2">Ibadan - Culture & Tranquility</h3>
@@ -259,56 +282,67 @@
             </div>
         </section>
 
-        <!-- Featured Properties (Off-White Background) --><section id="featured" class="py-16 sm:py-24 bg-be-light">
+        <!-- Featured Properties Section -->
+        <section id="featured" class="py-16 sm:py-24 bg-be-light">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-4xl font-extrabold text-center mb-16 section-header scroll-animate">Featured Shortlet Properties</h2>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10" id="property-list">
                     
-                    <!-- Listing 1: Oniru, VI (Lagos) --><div class="property-card bg-white rounded-xl card-shadow overflow-hidden border border-gray-100 card-hover-dynamic scroll-animate" data-city="Lagos" data-area="Victoria Island" data-budget="100k+">
-                        <div class="image-container">
-                            <video src="https://ik.imagekit.io/vgflfdcic/Lagos1/WhatsApp%20Video%202025-11-02%20at%2020.58.41_069b44cf.mp4" autoplay loop muted playsinline class="w-full h-full object-cover" poster="https://placehold.co/800x600/171717/C29F5F?text=Loading+Video..."></video>
+                    <!-- Property 1: 3 Bed Oniru -->
+                    <div class="property-card bg-white rounded-xl card-shadow overflow-hidden border border-gray-100 card-hover-dynamic scroll-animate" data-city="Lagos" data-area="Oniru" data-budget="100k+">
+                        <div class="image-container" id="property-1-carousel">
+                            <video data-media-index="0" src="https://ik.imagekit.io/vgflfdcic/Lagos1/WhatsApp%20Video%202025-11-02%20at%2020.58.41_069b44cf.mp4" class="carousel-media active" loop muted autoplay playsinline></video>
                         </div>
                         <div class="p-6">
+                            <!-- Header -->
                             <div class="flex justify-between items-center mb-3">
-                                <span class="text-xs font-semibold uppercase tracking-wider text-be-accent bg-be-accent bg-opacity-10 py-1 px-3 rounded-full">Lagos - Oniru, VI</span>
-                                <span class="text-2xl font-bold text-be-dark">₦270,000<span class="text-base font-normal text-gray-500">/day</span></span>
+                                <span class="text-xs font-semibold uppercase tracking-wider text-be-accent bg-be-accent bg-opacity-10 py-1 px-3 rounded-full">Lagos - Oniru</span>
+                                <span class="text-2xl font-bold text-be-dark">₦270k<span class="text-base font-normal text-gray-500">/day</span></span>
                             </div>
-                            <h3 class="text-xl font-bold text-be-dark mb-3">3 Bedroom Apartment</h3>
-                            
-                            <!-- Features --><ul class="text-sm text-gray-600 mb-4 list-disc list-inside space-y-1">
+                            <!-- Title -->
+                            <h3 class="text-xl font-bold text-be-dark mb-3">3 Bedroom apartment (Oniru)</h3>
+                            <!-- Rates -->
+                            <div class="text-sm text-gray-700 mb-3">
+                                <p><span class="font-semibold">December Rate:</span> ₦430k/night</p>
+                                <p><span class="font-semibold">Caution:</span> ₦100k</p>
+                            </div>
+                            <!-- Features -->
+                            <ul class="text-sm text-gray-600 mb-4 list-disc list-inside space-y-1">
                                 <li>Unlimited WiFi</li>
                                 <li>Dstv</li>
                                 <li>Housekeeping</li>
                                 <li>24 hours power</li>
                                 <li>Swimming pool</li>
                             </ul>
-                            <p class="text-sm text-gray-500 mb-1"><span class="font-semibold">December Rate:</span> ₦430,000/night</p>
-                            <p class="text-sm text-gray-500 mb-4"><span class="font-semibold">Caution:</span> ₦100,000</p>
-
-                            <!-- Booking Buttons --><div class="flex space-x-3">
+                            
+                            <!-- Booking Buttons -->
+                            <div class="flex space-x-3">
                                 <a href="tel:+2348104863579" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg border border-be-accent text-be-accent hover:bg-be-accent hover:text-white transition duration-200 transform hover:scale-105">
                                     Call to Book
                                 </a>
-                                <a href="https://wa.me/2348104863579?text=I'm%20interested%20in%20the%203%20Bedroom%20in%20Oniru%20at%20₦270,000/day" target="_blank" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg bg-green-500 text-white hover:bg-green-600 transition duration-200 transform hover:scale-105">
+                                <a href="https://wa.me/2348104863579?text=I'm%20interested%20in%20the%203%20Bedroom%20apartment%20in%20Oniru%20at%20₦270,000/day" target="_blank" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg bg-green-500 text-white hover:bg-green-600 transition duration-200 transform hover:scale-105">
                                     WhatsApp
                                 </a>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Listing 2: Edgewater Estate, Lekki (Lagos) --><div class="property-card bg-white rounded-xl card-shadow overflow-hidden border border-gray-100 card-hover-dynamic scroll-animate" data-city="Lagos" data-area="Lekki" data-budget="100k+">
-                        <div class="image-container">
-                            <video src="https://ik.imagekit.io/vgflfdcic/Lagos2/WhatsApp%20Video%202025-11-02%20at%2021.03.24_32cb7b59.mp4" autoplay loop muted playsinline class="w-full h-full object-cover" poster="https://placehold.co/800x600/171717/C29F5F?text=Loading+Video..."></video>
+                    <!-- Property 2: 3 Bed Edgewater -->
+                    <div class="property-card bg-white rounded-xl card-shadow overflow-hidden border border-gray-100 card-hover-dynamic scroll-animate" data-city="Lagos" data-area="Lekki" data-budget="100k+">
+                        <div class="image-container" id="property-2-carousel">
+                            <video data-media-index="0" src="https://ik.imagekit.io/vgflfdcic/Lagos2/WhatsApp%20Video%202025-11-02%20at%2021.03.24_32cb7b59.mp4" class="carousel-media active" loop muted autoplay playsinline></video>
                         </div>
                         <div class="p-6">
+                            <!-- Header -->
                             <div class="flex justify-between items-center mb-3">
                                 <span class="text-xs font-semibold uppercase tracking-wider text-be-accent bg-be-accent bg-opacity-10 py-1 px-3 rounded-full">Lagos - Lekki</span>
-                                <span class="text-2xl font-bold text-be-dark">₦180,000<span class="text-base font-normal text-gray-500">/day</span></span>
+                                <span class="text-2xl font-bold text-be-dark">₦180k<span class="text-base font-normal text-gray-500">/day</span></span>
                             </div>
-                            <h3 class="text-xl font-bold text-be-dark mb-3">3 Bedroom Apartment</h3>
-                            
-                            <!-- Features --><ul class="text-sm text-gray-600 mb-4 list-disc list-inside space-y-1">
+                            <!-- Title -->
+                            <h3 class="text-xl font-bold text-be-dark mb-3">3 bedroom Apartment (Edgewater)</h3>
+                            <!-- Features -->
+                            <ul class="text-sm text-gray-600 mb-4 list-disc list-inside space-y-1">
                                 <li>Snooker</li>
                                 <li>Outdoor Table Tennis</li>
                                 <li>PS5 console</li>
@@ -316,37 +350,41 @@
                              <p class="text-sm text-green-600 font-semibold mb-4 hidden">Available from Today</p> <!-- <-- Hiding this line as requested -->
 
 
-                            <!-- Booking Buttons --><div class="flex space-x-3">
+                            <!-- Booking Buttons -->
+                            <div class="flex space-x-3">
                                 <a href="tel:+2348104863579" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg border border-be-accent text-be-accent hover:bg-be-accent hover:text-white transition duration-200 transform hover:scale-105">
                                     Call to Book
                                 </a>
-                                <a href="https://wa.me/2348104863579?text=I'm%20interested%20in%20the%203%20Bedroom%20in%20Edgewater%20Estate%20at%20₦180,000/day" target="_blank" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg bg-green-500 text-white hover:bg-green-600 transition duration-200 transform hover:scale-105">
+                                <a href="https://wa.me/2348104863579?text=I'm%20interested%20in%20the%203%20bedroom%20Apartment%20in%20Edgewater%20at%20₦180,000/day" target="_blank" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg bg-green-500 text-white hover:bg-green-600 transition duration-200 transform hover:scale-105">
                                     WhatsApp
                                 </a>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Listing 3: CELLAR VINE, Lekki (Lagos) --><div class="property-card bg-white rounded-xl card-shadow overflow-hidden border border-gray-100 card-hover-dynamic scroll-animate" data-city="Lagos" data-area="Lekki" data-budget="100k+">
-                        <div class="image-container">
-                             <video src="https://ik.imagekit.io/vgflfdcic/Lagos3/WhatsApp%20Video%202025-11-02%20at%2021.04.13_4bf4d9cb.mp4" autoplay loop muted playsinline class="w-full h-full object-cover" poster="https://placehold.co/800x600/171717/C29F5F?text=Loading+Video..."></video>
+                    <!-- Property 3: CELLAR VINE -->
+                    <div class="property-card bg-white rounded-xl card-shadow overflow-hidden border border-gray-100 card-hover-dynamic scroll-animate" data-city="Lagos" data-area="Lekki" data-budget="100k+">
+                        <div class="image-container" id="property-3-carousel">
+                           <video data-media-index="0" src="https://ik.imagekit.io/vgflfdcic/Lagos3/WhatsApp%20Video%202025-11-02%20at%2021.04.13_4bf4d9cb.mp4" class="carousel-media active" loop muted autoplay playsinline></video>
                         </div>
                         <div class="p-6">
+                            <!-- Header -->
                             <div class="flex justify-between items-center mb-3">
                                 <span class="text-xs font-semibold uppercase tracking-wider text-be-accent bg-be-accent bg-opacity-10 py-1 px-3 rounded-full">Lagos - Lekki Phase 1</span>
-                                <span class="text-2xl font-bold text-be-dark">₦190,000<span class="text-base font-normal text-gray-500">/day</span></span>
+                                <span class="text-2xl font-bold text-be-dark">₦190k<span class="text-base font-normal text-gray-500">/day</span></span>
                             </div>
-                            <h3 class="text-xl font-bold text-be-dark mb-3">CELLAR VINE (Smart 2BR)</h3>
-                            
-                            <!-- Features --><ul class="text-sm text-gray-600 mb-4 list-disc list-inside space-y-1">
+                            <!-- Title -->
+                            <h3 class="text-xl font-bold text-be-dark mb-3">CELLAR VINE (2 Bedroom)</h3>
+                            <!-- Features -->
+                            <ul class="text-sm text-gray-600 mb-4 list-disc list-inside space-y-1">
                                 <li>Google Smart Home</li>
                                 <li>Rooftop Pool & Gym</li>
                                 <li>PS5 & Snooker</li>
                                 <li>Wine Cellar</li>
-                                <li>Elevator</li>
                             </ul>
-
-                            <!-- Booking Buttons --><div class="flex space-x-3">
+                            
+                            <!-- Booking Buttons -->
+                            <div class="flex space-x-3">
                                 <a href="tel:+2348104863579" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg border border-be-accent text-be-accent hover:bg-be-accent hover:text-white transition duration-200 transform hover:scale-105">
                                     Call to Book
                                 </a>
@@ -357,106 +395,340 @@
                         </div>
                     </div>
                     
-                    <!-- Listing 4: Admiralty, Lekki (Lagos) --><div class="property-card bg-white rounded-xl card-shadow overflow-hidden border border-gray-100 card-hover-dynamic scroll-animate" data-city="Lagos" data-area="Lekki" data-budget="100k+">
-                        <div class="image-container" id="lekki-cinema-carousel">
-                            <img data-img-index="0" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0043.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT';" alt="Lekki Apartment View 1" class="carousel-media active">
-                            <img data-img-index="1" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0052.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT';" alt="Lekki Apartment View 2" class="carousel-media">
-                            <img data-img-index="2" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0042.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT';" alt="Lekki Apartment View 3" class="carousel-media">
-                            <img data-img-index="3" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0040.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT';" alt="Lekki Apartment View 4" class="carousel-media">
-                            <img data-img-index="4" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0045.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT';" alt="Lekki Apartment View 5" class="carousel-media">
-                            <img data-img-index="5" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0048.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT';" alt="Lekki Apartment View 6" class="carousel-media">
-                            <img data-img-index="6" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0054.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT';" alt="Lekki Apartment View 7" class="carousel-media">
-                            <img data-img-index="7" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0051.jpg" onerror="this.onerror=null; this.src='https:"https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT'; alt="Lekki Apartment View 8" class="carousel-media">
-                            <img data-img-index="8" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0041.jpg" onerror="this.onerror=null; this.src='https:"https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT'; alt="Lekki Apartment View 9" class="carousel-media">
-                            <img data-img-index="9" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0049.jpg" onerror="this.onerror=null; this.src='https:"https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT'; alt="Lekki Apartment View 10" class="carousel-media">
-                            <img data-img-index="10" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0047.jpg" onerror="this.onerror=null; this.src='https:"https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT'; alt="Lekki Apartment View 11" class="carousel-media">
-                            <img data-img-index="11" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0039.jpg" onerror="this.onerror=null; this.src='https:"https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT'; alt="Lekki Apartment View 12" class="carousel-media">
-                            <img data-img-index="12" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0046.jpg" onerror="this.onerror=null; this.src='https:"https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT'; alt="Lekki Apartment View 13" class="carousel-media">
-                            <img data-img-index="13" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0044.jpg" onerror="this.onerror=null; this.src='https:"https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT'; alt="Lekki Apartment View 14" class="carousel-media">
-                            <img data-img-index="14" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0053.jpg" onerror="this.onerror=null; this.src='https:"https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT'; alt="Lekki Apartment View 15" class="carousel-media">
-                            <img data-img-index="15" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0050.jpg" onerror="this.onerror=null; this.src='https:"https://placehold.co/800x600/171717/C29F5F?text=LEKKI+APARTMENT'; alt="Lekki Apartment View 16" class="carousel-media">
-                        
-                            <!-- ADDED NAV BUTTONS -->
-                            <button class="carousel-nav prev" data-carousel-id="lekki-cinema-carousel" data-direction="-1" aria-label="Previous">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                            </button>
-                            <button class="carousel-nav next" data-carousel-id="lekki-cinema-carousel" data-direction="1" aria-label="Next">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                            </button>
+                    <!-- Property 4: Admiralty Road -->
+                    <div class="property-card bg-white rounded-xl card-shadow overflow-hidden border border-gray-100 card-hover-dynamic scroll-animate" data-city="Lagos" data-area="Lekki" data-budget="100k+">
+                        <div class="image-container has-carousel-nav" id="property-4-carousel">
+                            <img data-media-index="0" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0043.jpg" class="carousel-media active" alt="Lekki Phase 1 Apartment">
+                            <img data-media-index="1" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0052.jpg" class="carousel-media" alt="Lekki Phase 1 Apartment">
+                            <img data-media-index="2" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0042.jpg" class="carousel-media" alt="Lekki Phase 1 Apartment">
+                            <img data-media-index="3" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0040.jpg" class="carousel-media" alt="Lekki Phase 1 Apartment">
+                            <img data-media-index="4" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0045.jpg" class="carousel-media" alt="Lekki Phase 1 Apartment">
+                            <img data-media-index="5" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0048.jpg" class="carousel-media" alt="Lekki Phase 1 Apartment">
+                            <img data-media-index="6" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0054.jpg" class="carousel-media" alt="Lekki Phase 1 Apartment">
+                            <img data-media-index="7" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0051.jpg" class="carousel-media" alt="Lekki Phase 1 Apartment">
+                            <img data-media-index="8" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0041.jpg" class="carousel-media" alt="Lekki Phase 1 Apartment">
+                            <img data-media-index="9" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0049.jpg" class="carousel-media" alt="Lekki Phase 1 Apartment">
+                            <img data-media-index="10" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0047.jpg" class="carousel-media" alt="Lekki Phase 1 Apartment">
+                            <img data-media-index="11" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0039.jpg" class="carousel-media" alt="Lekki Phase 1 Apartment">
+                            <img data-media-index="12" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0046.jpg" class="carousel-media" alt="Lekki Phase 1 Apartment">
+                            <img data-media-index="13" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0044.jpg" class="carousel-media" alt="Lekki Phase 1 Apartment">
+                            <img data-media-index="14" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0053.jpg" class="carousel-media" alt="Lekki Phase 1 Apartment">
+                            <img data-media-index="15" src="https://ik.imagekit.io/vgflfdcic/Lagos4/IMG-20251102-WA0050.jpg" class="carousel-media" alt="Lekki Phase 1 Apartment">
+                            <div class="carousel-nav prev">❮</div>
+                            <div class="carousel-nav next">❯</div>
                         </div>
                         <div class="p-6">
+                            <!-- Header -->
                             <div class="flex justify-between items-center mb-3">
                                 <span class="text-xs font-semibold uppercase tracking-wider text-be-accent bg-be-accent bg-opacity-10 py-1 px-3 rounded-full">Lagos - Lekki Phase 1</span>
-                                <span class="text-2xl font-bold text-be-dark">₦180,000<span class="text-base font-normal text-gray-500">/day</span></span>
+                                <span class="text-2xl font-bold text-be-dark">₦180k<span class="text-base font-normal text-gray-500">/day</span></span>
                             </div>
-                            <h3 class="text-xl font-bold text-be-dark mb-3">Apartment w/ Cinema & Gym</h3>
-                            
-                            <!-- Features --><ul class="text-sm text-gray-600 mb-4 list-disc list-inside space-y-1">
-                                <li>Elevator (3rd floor)</li>
+                            <!-- Title -->
+                            <h3 class="text-xl font-bold text-be-dark mb-3">Apartment (Admiralty Road)</h3>
+                            <!-- Features -->
+                            <ul class="text-sm text-gray-600 mb-4 list-disc list-inside space-y-1">
+                                <li>Elevator</li>
                                 <li>Gym</li>
                                 <li>PS5</li>
                                 <li>Cinema</li>
                             </ul>
-
-                            <!-- Booking Buttons --><div class="flex space-x-3">
+                            
+                            <!-- Booking Buttons -->
+                            <div class="flex space-x-3">
                                 <a href="tel:+2348104863579" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg border border-be-accent text-be-accent hover:bg-be-accent hover:text-white transition duration-200 transform hover:scale-105">
                                     Call to Book
                                 </a>
-                                <a href="https://wa.me/2348104863579?text=I'm%20interested%20in%20the%20Lekki%20Apartment%20with%20Cinema%20at%20₦180,000/day" target="_blank" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg bg-green-500 text-white hover:bg-green-600 transition duration-200 transform hover:scale-105">
+                                <a href="https://wa.me/2348104863579?text=I'm%20interested%20in%20the%20Admiralty%20Road%20Apartment%20at%20₦180,000/day" target="_blank" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg bg-green-500 text-white hover:bg-green-600 transition duration-200 transform hover:scale-105">
                                     WhatsApp
                                 </a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Listing 5: One Bedroom Loft, Lekki (Lagos) --><div class="property-card bg-white rounded-xl card-shadow overflow-hidden border border-gray-100 card-hover-dynamic scroll-animate" data-city="Lagos" data-area="Lekki" data-budget="100k+">
-                        <div class="image-container" id="lekki-loft-carousel">
-                            <!-- ADDED VIDEO AS FIRST ITEM -->
-                            <video data-media-index="0" src="https://ik.imagekit.io/vgflfdcic/Lagos5/VID-20251102-WA0045.mp4" autoplay loop muted playsinline class="carousel-media active w-full h-full object-cover"></video>
-                            
-                            <!-- UPDATED IMAGES -->
-                            <img data-media-index="1" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0059.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 1" class="carousel-media"> <!-- 'active' removed, class changed, index updated -->
-                            <img data-media-index="2" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0055.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 2" class="carousel-media"> <!-- class changed, index updated -->
-                            <img data-media-index="3" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0058.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 3" class="carousel-media"> <!-- ...for all images -->
-                            <img data-media-index="4" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0056.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 4" class="carousel-media">
-                            <img data-media-index="5" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0057.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 5" class="carousel-media">
-                            <img data-media-index="6" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0061.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 6" class="carousel-media">
-                            <img data-media-index="7" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0060.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT'; alt="Lekki Loft Apartment View 7" class="carousel-media">
-                            <img data-media-index="8" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0062.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 8" class="carousel-media">
-                            <img data-media-index="9" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0066.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 9" class="carousel-media">
-                            <img data-media-index="10" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0063.jpg" onerror="this.onerror=null; this.src='httpsServices/placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 10" class="carousel-media">
-                            <img data-media-index="11" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0065.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT'; alt="Lekki Loft Apartment View 11" class="carousel-media">
-                            <img data-media-index="12" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0067.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 12" class="carousel-media">
-                            <img data-media-index="13" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0069.jpg" onerror="this.onerror=null; this.src='httpss://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT'; alt="Lekki Loft Apartment View 13" class="carousel-media">
-                            <img data-media-index="14" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0068.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 14" class="carousel-media">
-                            <img data-media-index="15" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0064.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/171717/C29F5F?text=LEKKI+LOFT';" alt="Lekki Loft Apartment View 15" class="carousel-media">
-                            
-                            <!-- ADDED NAV BUTTONS -->
-                            <button class="carousel-nav prev" data-carousel-id="lekki-loft-carousel" data-direction="-1" aria-label="Previous">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                            </button>
-                            <button class="carousel-nav next" data-carousel-id="lekki-loft-carousel" data-direction="1" aria-label="Next">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                            </button>
+                    <!-- Property 5: 1 Bed Loft Edgewater -->
+                    <div class="property-card bg-white rounded-xl card-shadow overflow-hidden border border-gray-100 card-hover-dynamic scroll-animate" data-city="Lagos" data-area="Lekki" data-budget="100k+">
+                        <div class="image-container has-carousel-nav" id="property-5-carousel">
+                            <video data-media-index="0" src="https://ik.imagekit.io/vgflfdcic/Lagos5/VID-20251102-WA0045.mp4" class="carousel-media active" loop muted autoplay playsinline></video>
+                            <img data-media-index="1" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0059.jpg" class="carousel-media" alt="Loft Apartment">
+                            <img data-media-index="2" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0055.jpg" class="carousel-media" alt="Loft Apartment">
+                            <img data-media-index="3" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0058.jpg" class="carousel-media" alt="Loft Apartment">
+                            <img data-media-index="4" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0056.jpg" class="carousel-media" alt="Loft Apartment">
+                            <img data-media-index="5" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0057.jpg" class="carousel-media" alt="Loft Apartment">
+                            <img data-media-index="6" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0061.jpg" class="carousel-media" alt="Loft Apartment">
+                            <img data-media-index="7" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0060.jpg" class="carousel-media" alt="Loft Apartment">
+                            <img data-media-index="8" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0062.jpg" class="carousel-media" alt="Loft Apartment">
+                            <img data-media-index="9" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0066.jpg" class="carousel-media" alt="Loft Apartment">
+                            <img data-media-index="10" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0063.jpg" class="carousel-media" alt="Loft Apartment">
+                            <img data-media-index="11" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0065.jpg" class="carousel-media" alt="Loft Apartment">
+                            <img data-media-index="12" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0067.jpg" class="carousel-media" alt="Loft Apartment">
+                            <img data-media-index="13" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0069.jpg" class="carousel-media" alt="Loft Apartment">
+                            <img data-media-index="14" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0068.jpg" class="carousel-media" alt="Loft Apartment">
+                            <img data-media-index="15" src="https://ik.imagekit.io/vgflfdcic/Lagos5/IMG-20251102-WA0064.jpg" class="carousel-media" alt="Loft Apartment">
+                            <div class="carousel-nav prev">❮</div>
+                            <div class="carousel-nav next">❯</div>
                         </div>
                         <div class="p-6">
+                            <!-- Header -->
                             <div class="flex justify-between items-center mb-3">
                                 <span class="text-xs font-semibold uppercase tracking-wider text-be-accent bg-be-accent bg-opacity-10 py-1 px-3 rounded-full">Lagos - Lekki</span>
-                                <span class="text-2xl font-bold text-be-dark">₦180,000<span class="text-base font-normal text-gray-500">/day</span></span>
+                                <span class="text-2xl font-bold text-be-dark">₦180k<span class="text-base font-normal text-gray-500">/day</span></span>
                             </div>
+                            <!-- Title -->
                             <h3 class="text-xl font-bold text-be-dark mb-3">One Bedroom Loft Apartment</h3>
-                            
-                            <!-- Features --><ul class="text-sm text-gray-600 mb-4 list-disc list-inside space-y-1">
+                            <!-- Features -->
+                            <ul class="text-sm text-gray-600 mb-4 list-disc list-inside space-y-1">
                                 <li>Swimming pool 🏊‍♀️</li>
                                 <li>PS5</li>
                             </ul>
                              <p class="text-sm text-blue-600 font-semibold mb-4 hidden">Available from Tomorrow</p> <!-- <-- Hiding this line as requested -->
 
-                            <!-- Booking Buttons --><div class="flex space-x-3">
+                            <!-- Booking Buttons -->
+                            <div class="flex space-x-3">
                                 <a href="tel:+2348104863579" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg border border-be-accent text-be-accent hover:bg-be-accent hover:text-white transition duration-200 transform hover:scale-105">
                                     Call to Book
                                 </a>
-                                <a href="https://wa.me/2348104863579?text=I'm%20interested%20in%20the%20One%20Bedroom%20Loft%20in%20Lekki%20at%20₦180,000/day" target="_blank" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg bg-green-500 text-white hover:bg-green-600 transition duration-200 transform hover:scale-105">
+                                <a href="https://wa.me/2348104863579?text=I'm%20interested%20in%20the%20One%20Bedroom%20Loft%20Apartment%20at%20₦180,000/day" target="_blank" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg bg-green-500 text-white hover:bg-green-600 transition duration-200 transform hover:scale-105">
+                                    WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property 6: Periwinkle Residence -->
+                    <div class="property-card bg-white rounded-xl card-shadow overflow-hidden border border-gray-100 card-hover-dynamic scroll-animate" data-city="Lagos" data-area="Periwinkle" data-budget="100k+">
+                        <div class="image-container has-carousel-nav" id="property-6-carousel">
+                            <img data-media-index="0" src="https://ik.imagekit.io/vgflfdcic/Lagos6/IMG-20251107-WA0011.jpg" class="carousel-media active" alt="Periwinkle Residence">
+                            <img data-media-index="1" src="https://ik.imagekit.io/vgflfdcic/Lagos6/IMG-20251107-WA0027.jpg" class="carousel-media" alt="Periwinkle Residence">
+                            <img data-media-index="2" src="https://ik.imagekit.io/vgflfdcic/Lagos6/IMG-20251107-WA0018.jpg" class="carousel-media" alt="Periwinkle Residence">
+                            <img data-media-index="3" src="https://ik.imagekit.io/vgflfdcic/Lagos6/IMG-20251107-WA0015.jpg" class="carousel-media" alt="Periwinkle Residence">
+                            <img data-media-index="4" src="https://ik.imagekit.io/vgflfdcic/Lagos6/IMG-20251107-WA0023.jpg" class="carousel-media" alt="Periwinkle Residence">
+                            <img data-media-index="5" src="https://ik.imagekit.io/vgflfdcic/Lagos6/IMG-20251107-WA0016.jpg" class="carousel-media" alt="Periwinkle Residence">
+                            <img data-media-index="6" src="https://ik.imagekit.io/vgflfdcic/Lagos6/IMG-20251107-WA0010.jpg" class="carousel-media" alt="Periwinkle Residence">
+                            <img data-media-index="7" src="https://ik.imagekit.io/vgflfdcic/Lagos6/IMG-20251107-WA0014.jpg" class="carousel-media" alt="Periwinkle Residence">
+                            <img data-media-index="8" src="https://ik.imagekit.io/vgflfdcic/Lagos6/IMG-20251107-WA0017.jpg" class="carousel-media" alt="Periwinkle Residence">
+                            <img data-media-index="9" src="https://ik.imagekit.io/vgflfdcic/Lagos6/IMG-20251107-WA0024.jpg" class="carousel-media" alt="Periwinkle Residence">
+                            <img data-media-index="10" src="https://ik.imagekit.io/vgflfdcic/Lagos6/IMG-20251107-WA0022.jpg" class="carousel-media" alt="Periwinkle Residence">
+                            <img data-media-index="11" src="https://ik.imagekit.io/vgflfdcic/Lagos6/IMG-20251107-WA0021.jpg" class="carousel-media" alt="Periwinkle Residence">
+                            <img data-media-index="12" src="https://ik.imagekit.io/vgflfdcic/Lagos6/IMG-20251107-WA0013.jpg" class="carousel-media" alt="Periwinkle Residence">
+                            <img data-media-index="13" src="https://ik.imagekit.io/vgflfdcic/Lagos6/IMG-20251107-WA0012.jpg" class="carousel-media" alt="Periwinkle Residence">
+                            <img data-media-index="14" src="https://ik.imagekit.io/vgflfdcic/Lagos6/IMG-20251107-WA0019.jpg" class="carousel-media" alt="Periwinkle Residence">
+                            <img data-media-index="15" src="https://ik.imagekit.io/vgflfdcic/Lagos6/IMG-20251107-WA0020.jpg" class="carousel-media" alt="Periwinkle Residence">
+                            <div class="carousel-nav prev">❮</div>
+                            <div class="carousel-nav next">❯</div>
+                        </div>
+                        <div class="p-6">
+                            <!-- Header -->
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-xs font-semibold uppercase tracking-wider text-be-accent bg-be-accent bg-opacity-10 py-1 px-3 rounded-full">Lagos - Periwinkle</span>
+                                <span class="text-2xl font-bold text-be-dark">₦170k<span class="text-base font-normal text-gray-500">/day</span></span>
+                            </div>
+                            <!-- Title -->
+                            <h3 class="text-xl font-bold text-be-dark mb-3">Cozy 2 Bedroom Apartment</h3>
+                            <!-- Features -->
+                            <ul class="text-sm text-gray-600 mb-4 list-disc list-inside space-y-1">
+                                <li>Swimming pool 🏊</li>
+                                <li>Gym</li>
+                                <li>PS5</li>
+                            </ul>
+                            
+                            <!-- Booking Buttons -->
+                            <div class="flex space-x-3">
+                                <a href="tel:+2348104863579" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg border border-be-accent text-be-accent hover:bg-be-accent hover:text-white transition duration-200 transform hover:scale-105">
+                                    Call to Book
+                                </a>
+                                <a href="https://wa.me/2348104863579?text=I'm%20interested%20in%20the%202%20Bedroom%20in%20Periwinkle%20Residence%20at%20₦170,000/day" target="_blank" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg bg-green-500 text-white hover:bg-green-600 transition duration-200 transform hover:scale-105">
+                                    WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property 7: Ikoyi Promo -->
+                    <div class="property-card bg-white rounded-xl card-shadow overflow-hidden border border-gray-100 card-hover-dynamic scroll-animate" data-city="Lagos" data-area="Ikoyi" data-budget="100k+">
+                        <div class="image-container has-carousel-nav" id="property-7-carousel">
+                            <img data-media-index="0" src="https://ik.imagekit.io/vgflfdcic/Lagos7/IMG-20251107-WA0030.jpg" class="carousel-media active" alt="Ikoyi Apartment">
+                            <img data-media-index="1" src="https://ik.imagekit.io/vgflfdcic/Lagos7/IMG-20251107-WA0036.jpg" class="carousel-media" alt="Ikoyi Apartment">
+                            <img data-media-index="2" src="https://ik.imagekit.io/vgflfdcic/Lagos7/IMG-20251107-WA0028.jpg" class="carousel-media" alt="Ikoyi Apartment">
+                            <img data-media-index="3" src="https://ik.imagekit.io/vgflfdcic/Lagos7/IMG-20251107-WA0025.jpg" class="carousel-media" alt="Ikoyi Apartment">
+                            <img data-media-index="4" src="https://ik.imagekit.io/vgflfdcic/Lagos7/IMG-20251107-WA0026.jpg" class="carousel-media" alt="Ikoyi Apartment">
+                            <img data-media-index="5" src="https://ik.imagekit.io/vgflfdcic/Lagos7/IMG-20251107-WA0029.jpg" class="carousel-media" alt="Ikoyi Apartment">
+                            <img data-media-index="6" src="https://ik.imagekit.io/vgflfdcic/Lagos7/IMG-20251107-WA0032.jpg" class="carousel-media" alt="Ikoyi Apartment">
+                            <img data-media-index="7" src="https://ik.imagekit.io/vgflfdcic/Lagos7/IMG-20251107-WA0035.jpg" class="carousel-media" alt="Ikoyi Apartment">
+                            <div class="carousel-nav prev">❮</div>
+                            <div class="carousel-nav next">❯</div>
+                        </div>
+                        <div class="p-6">
+                            <!-- Header -->
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-xs font-semibold uppercase tracking-wider text-be-accent bg-be-accent bg-opacity-10 py-1 px-3 rounded-full">Lagos - Ikoyi</span>
+                                <span class="text-2xl font-bold text-be-dark">₦120k<span class="text-base font-normal text-gray-500">/day</span></span>
+                            </div>
+                            <!-- Title -->
+                            <h3 class="text-xl font-bold text-be-dark mb-3">Ikoyi Apartment (Promo)</h3>
+                            <!-- Rates -->
+                            <div class="text-sm text-gray-700 mb-3">
+                                <p><span class="font-semibold">December Rate:</span> ₦230k/night</p>
+                            </div>
+                            <!-- Features -->
+                            <ul class="text-sm text-gray-600 mb-4 list-disc list-inside space-y-1">
+                                <li>24/7 Security & Power</li>
+                                <li>Smart Lock System</li>
+                                <li>Swimming pool</li>
+                            </ul>
+                            
+                            <!-- Booking Buttons -->
+                            <div class="flex space-x-3">
+                                <a href="tel:+2348104863579" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg border border-be-accent text-be-accent hover:bg-be-accent hover:text-white transition duration-200 transform hover:scale-105">
+                                    Call to Book
+                                </a>
+                                <a href="https://wa.me/2348104863579?text=I'm%20interested%20in%20the%20Ikoyi%20Apartment%20Promo%20at%20₦120,000/day" target="_blank" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg bg-green-500 text-white hover:bg-green-600 transition duration-200 transform hover:scale-105">
+                                    WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property 8: EZRA COURT -->
+                    <div class="property-card bg-white rounded-xl card-shadow overflow-hidden border border-gray-100 card-hover-dynamic scroll-animate" data-city="Lagos" data-area="Lekki" data-budget="100k+">
+                        <div class="image-container has-carousel-nav" id="property-8-carousel">
+                            <img data-media-index="0" src="https://ik.imagekit.io/vgflfdcic/Lagos8/IMG-20251107-WA0034.jpg" class="carousel-media active" alt="EZRA COURT">
+                            <img data-media-index="1" src="https://ik.imagekit.io/vgflfdcic/Lagos8/IMG-20251107-WA0047.jpg" class="carousel-media" alt="EZRA COURT">
+                            <img data-media-index="2" src="https://ik.imagekit.io/vgflfdcic/Lagos8/IMG-20251107-WA0042.jpg" class="carousel-media" alt="EZRA COURT">
+                            <img data-media-index="3" src="https://ik.imagekit.io/vgflfdcic/Lagos8/IMG-20251107-WA0045.jpg" class="carousel-media" alt="EZRA COURT">
+                            <img data-media-index="4" src="https://ik.imagekit.io/vgflfdcic/Lagos8/IMG-20251107-WA0040.jpg" class="carousel-media" alt="EZRA COURT">
+                            <img data-media-index="5" src="https://ik.imagekit.io/vgflfdcic/Lagos8/IMG-20251107-WA0041.jpg" class="carousel-media" alt="EZRA COURT">
+                            <img data-media-index="6" src="https://ik.imagekit.io/vgflfdcic/Lagos8/IMG-20251107-WA0043.jpg" class="carousel-media" alt="EZRA COURT">
+                            <img data-media-index="7" src="https://ik.imagekit.io/vgflfdcic/Lagos8/IMG-20251107-WA0046.jpg" class="carousel-media" alt="EZRA COURT">
+                            <img data-media-index="8" src="https://ik.imagekit.io/vgflfdcic/Lagos8/IMG-20251107-WA0031.jpg" class="carousel-media" alt="EZRA COURT">
+                            <img data-media-index="9" src="https://ik.imagekit.io/vgflfdcic/Lagos8/IMG-20251107-WA0038.jpg" class="carousel-media" alt="EZRA COURT">
+                            <img data-media-index="10" src="https://ik.imagekit.io/vgflfdcic/Lagos8/IMG-20251107-WA0044.jpg" class="carousel-media" alt="EZRA COURT">
+                            <img data-media-index="11" src="https://ik.imagekit.io/vgflfdcic/Lagos8/IMG-20251107-WA0039.jpg" class="carousel-media" alt="EZRA COURT">
+                            <img data-media-index="12" src="https://ik.imagekit.io/vgflfdcic/Lagos8/IMG-20251107-WA0033.jpg" class="carousel-media" alt="EZRA COURT">
+                            <img data-media-index="13" src="https://ik.imagekit.io/vgflfdcic/Lagos8/IMG-20251107-WA0037.jpg" class="carousel-media" alt="EZRA COURT">
+                            <div class="carousel-nav prev">❮</div>
+                            <div class="carousel-nav next">❯</div>
+                        </div>
+                        <div class="p-6">
+                            <!-- Header -->
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-xs font-semibold uppercase tracking-wider text-be-accent bg-be-accent bg-opacity-10 py-1 px-3 rounded-full">Lagos - Lekki Phase 1</span>
+                                <span class="text-2xl font-bold text-be-dark">₦200k<span class="text-base font-normal text-gray-500">/day</span></span>
+                            </div>
+                            <!-- Title -->
+                            <h3 class="text-xl font-bold text-be-dark mb-3">EZRA COURT, Lekki</h3>
+                            <!-- Rates -->
+                            <div class="text-sm text-gray-700 mb-3">
+                                <p><span class="font-semibold">December Rate:</span> ₦340k/night</p>
+                                <p><span class="font-semibold">Caution:</span> ₦100k</p>
+                            </div>
+                            <!-- Features -->
+                            <ul class="text-sm text-gray-600 mb-4 list-disc list-inside space-y-1">
+                                <li>PS5</li>
+                                <li>Swimming pool</li>
+                                <li>Wine bar</li>
+                            </ul>
+                            
+                            <!-- Booking Buttons -->
+                            <div class="flex space-x-3">
+                                <a href="tel:+2348104863579" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg border border-be-accent text-be-accent hover:bg-be-accent hover:text-white transition duration-200 transform hover:scale-105">
+                                    Call to Book
+                                </a>
+                                <a href="https://wa.me/2348104863579?text=I'm%20interested%20in%20EZRA%20COURT%20at%20₦200,000/day" target="_blank" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg bg-green-500 text-white hover:bg-green-600 transition duration-200 transform hover:scale-105">
+                                    WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Property 9: Abraham Adesanya -->
+                    <div class="property-card bg-white rounded-xl card-shadow overflow-hidden border border-gray-100 card-hover-dynamic scroll-animate" data-city="Lagos" data-area="Abraham Adesanya" data-budget="100k+">
+                        <div class="image-container has-carousel-nav" id="property-9-carousel">
+                            <img data-media-index="0" src="https://ik.imagekit.io/vgflfdcic/Lagos9/IMG-20251108-WA0009.jpg" class="carousel-media active" alt="Abraham Adesanya Apt">
+                            <img data-media-index="1" src="https://ik.imagekit.io/vgflfdcic/Lagos9/IMG-20251108-WA0018.jpg" class="carousel-media" alt="Abraham Adesanya Apt">
+                            <img data-media-index="2" src="https://ik.imagekit.io/vgflfdcic/Lagos9/IMG-20251108-WA0013.jpg" class="carousel-media" alt="Abraham Adesanya Apt">
+                            <img data-media-index="3" src="https://ik.imagekit.io/vgflfdcic/Lagos9/IMG-20251108-WA0010.jpg" class="carousel-media" alt="Abraham Adesanya Apt">
+                            <img data-media-index="4" src="https://ik.imagekit.io/vgflfdcic/Lagos9/IMG-20251108-WA0014.jpg" class="carousel-media" alt="Abraham Adesanya Apt">
+                            <img data-media-index="5" src="https://ik.imagekit.io/vgflfdcic/Lagos9/IMG-20251108-WA0012.jpg" class="carousel-media" alt="Abraham Adesanya Apt">
+                            <img data-media-index="6" src="https://ik.imagekit.io/vgflfdcic/Lagos9/IMG-20251108-WA0017.jpg" class="carousel-media" alt="Abraham Adesanya Apt">
+                            <img data-media-index="7" src="https://ik.imagekit.io/vgflfdcic/Lagos9/IMG-20251108-WA0011.jpg" class="carousel-media" alt="Abraham Adesanya Apt">
+                            <img data-media-index="8" src="https://ik.imagekit.io/vgflfdcic/Lagos9/IMG-20251108-WA0015.jpg" class="carousel-media" alt="Abraham Adesanya Apt">
+                            <img data-media-index="9" src="https://ik.imagekit.io/vgflfdcic/Lagos9/IMG-20251108-WA0016.jpg" class="carousel-media" alt="Abraham Adesanya Apt">
+                            <div class="carousel-nav prev">❮</div>
+                            <div class="carousel-nav next">❯</div>
+                        </div>
+                        <div class="p-6">
+                            <!-- Header -->
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-xs font-semibold uppercase tracking-wider text-be-accent bg-be-accent bg-opacity-10 py-1 px-3 rounded-full">Lagos - A. Adesanya</span>
+                                <!-- Price omitted as it varies -->
+                            </div>
+                            <!-- Title -->
+                            <h3 class="text-xl font-bold text-be-dark mb-3">Luxury 1 & 2 Bed Apartments</h3>
+                            <!-- Rates -->
+                            <div class="text-sm text-gray-700 mb-3">
+                                <p><span class="font-semibold">2 Bed:</span> ₦110k (Dec: ₦150k)</p>
+                                <p><span class="font-semibold">1 Bed:</span> ₦100k (Dec: ₦130k)</p>
+                            </div>
+                            <!-- Features -->
+                            <ul class="text-sm text-gray-600 mb-4 list-disc list-inside space-y-1">
+                                <li>Swimming pool & Gym</li>
+                                <li>Snooker/Cricket/Tennis</li>
+                                <li>Private football pitch</li>
+                            </ul>
+                            
+                            <!-- Booking Buttons -->
+                            <div class="flex space-x-3">
+                                <a href="tel:+2348104863579" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg border border-be-accent text-be-accent hover:bg-be-accent hover:text-white transition duration-200 transform hover:scale-105">
+                                    Call to Book
+                                </a>
+                                <a href="https://wa.me/2348104863579?text=I'm%20interested%20in%20the%20Abraham%20Adesanya%20apartments" target="_blank" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg bg-green-500 text-white hover:bg-green-600 transition duration-200 transform hover:scale-105">
+                                    WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property 10: Ikate 2-Bed -->
+                    <div class="property-card bg-white rounded-xl card-shadow overflow-hidden border border-gray-100 card-hover-dynamic scroll-animate" data-city="Lagos" data-area="Ikate" data-budget="100k+">
+                        <div class="image-container has-carousel-nav" id="property-10-carousel">
+                            <img data-media-index="0" src="https://ik.imagekit.io/vgflfdcic/Lagos10/IMG-20251108-WA0027.jpg" class="carousel-media active" alt="Ikate Apartment">
+                            <img data-media-index="1" src="https://ik.imagekit.io/vgflfdcic/Lagos10/IMG-20251108-WA0032.jpg" class="carousel-media" alt="Ikate Apartment">
+                            <img data-media-index="2" src="https://ik.imagekit.io/vgflfdcic/Lagos10/IMG-20251108-WA0033.jpg" class="carousel-media" alt="Ikate Apartment">
+                            <img data-media-index="3" src="https://ik.imagekit.io/vgflfdcic/Lagos10/IMG-20251108-WA0029.jpg" class="carousel-media" alt="Ikate Apartment">
+                            <img data-media-index="4" src="https://ik.imagekit.io/vgflfdcic/Lagos10/IMG-20251108-WA0035.jpg" class="carousel-media" alt="Ikate Apartment">
+                            <img data-media-index="5" src="https://ik.imagekit.io/vgflfdcic/Lagos10/IMG-20251108-WA0031.jpg" class="carousel-media" alt="Ikate Apartment">
+                            <img data-media-index="6" src="https://ik.imagekit.io/vgflfdcic/Lagos10/IMG-20251108-WA0028.jpg" class="carousel-media" alt="Ikate Apartment">
+                            <img data-media-index="7" src="https://ik.imagekit.io/vgflfdcic/Lagos10/IMG-20251108-WA0030.jpg" class="carousel-media" alt="Ikate Apartment">
+                            <img data-media-index="8" src="https://ik.imagekit.io/vgflfdcic/Lagos10/IMG-20251108-WA0034.jpg" class="carousel-media" alt="Ikate Apartment">
+                            <div class="carousel-nav prev">❮</div>
+                            <div class="carousel-nav next">❯</div>
+                        </div>
+                        <div class="p-6">
+                            <!-- Header -->
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-xs font-semibold uppercase tracking-wider text-be-accent bg-be-accent bg-opacity-10 py-1 px-3 rounded-full">Lagos - Ikate</span>
+                                <span class="text-2xl font-bold text-be-dark">₦140k<span class="text-base font-normal text-gray-500">/day</span></span>
+                            </div>
+                            <!-- Title -->
+                            <h3 class="text-xl font-bold text-be-dark mb-3">Brand New 2-bedroom Apartment</h3>
+                            <!-- Rates -->
+                            <div class="text-sm text-gray-700 mb-3">
+                                <p><span class="font-semibold">December Rate:</span> ₦240k/night</p>
+                                <p><span class="font-semibold">Caution:</span> ₦50k</p>
+                            </div>
+                            <!-- Features -->
+                            <ul class="text-sm text-gray-600 mb-4 list-disc list-inside space-y-1">
+                                <li>Snooker table</li>
+                                <li>PS5 on request</li>
+                                <li>Inverter Supported</li>
+                            </ul>
+                            
+                            <!-- Booking Buttons -->
+                            <div class="flex space-x-3">
+                                <a href="tel:+2348104863579" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg border border-be-accent text-be-accent hover:bg-be-accent hover:text-white transition duration-200 transform hover:scale-105">
+                                    Call to Book
+                                </a>
+                                <a href="https://wa.me/2348104863579?text=I'm%20interested%20in%20the%20Ikate%202-bedroom%20at%20₦140,000/day" target="_blank" class="flex-1 text-center py-2 text-sm font-semibold rounded-lg bg-green-500 text-white hover:bg-green-600 transition duration-200 transform hover:scale-105">
                                     WhatsApp
                                 </a>
                             </div>
@@ -473,7 +745,8 @@
             </div>
         </section>
 
-        <!-- About Us (White Background) --><section id="about-us" class="py-16 sm:py-24 bg-white border-t border-b border-gray-100">
+        <!-- About Us Section -->
+        <section id="about-us" class="py-16 sm:py-24 bg-white border-t border-b border-gray-100">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-4xl font-extrabold text-center mb-16 section-header scroll-animate">The Benny Empire Difference</h2>
 
@@ -486,10 +759,12 @@
                             Every property in our portfolio is meticulously selected and maintained to meet the highest standards of comfort and style. From the moment you book, our dedicated team ensures a seamless experience, allowing you to focus entirely on your business or leisure.
                         </p>
 
-                        <!-- Goals & Milestones - Now Interactive --><h3 class="text-2xl font-bold text-be-dark mb-4 border-l-4 border-be-accent pl-3">Goals & Milestones</h3>
+                        <!-- Goals & Milestones -->
+                        <h3 class="text-2xl font-bold text-be-dark mb-4 border-l-4 border-be-accent pl-3">Goals & Milestones</h3>
                         <div class="space-y-3">
                             
-                            <!-- Goal 1 --><div class="accordion-item bg-gray-50 rounded-lg overflow-hidden glow-effect" data-target="goal-1">
+                            <!-- Accordion Item 1 -->
+                            <div class="accordion-item bg-gray-50 rounded-lg overflow-hidden glow-effect" data-target="goal-1">
                                 <button class="accordion-header w-full flex justify-between items-center p-4 text-left font-bold text-be-accent hover:bg-gray-100 transition duration-150" aria-expanded="false" aria-controls="goal-1-content">
                                     <span>Ultimate Guest Comfort</span>
                                     <svg class="w-5 h-5 transition-transform duration-300 transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -499,7 +774,8 @@
                                 </div>
                             </div>
 
-                            <!-- Goal 2 --><div class="accordion-item bg-gray-50 rounded-lg overflow-hidden glow-effect" data-target="goal-2">
+                            <!-- Accordion Item 2 -->
+                            <div class="accordion-item bg-gray-50 rounded-lg overflow-hidden glow-effect" data-target="goal-2">
                                 <button class="accordion-header w-full flex justify-between items-center p-4 text-left font-bold text-be-accent hover:bg-gray-100 transition duration-150" aria-expanded="false" aria-controls="goal-2-content">
                                     <span>Unrivaled Service</span>
                                     <svg class="w-5 h-5 transition-transform duration-300 transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -509,7 +785,8 @@
                                 </div>
                             </div>
 
-                            <!-- Milestone 1 --><div class="accordion-item bg-gray-50 rounded-lg overflow-hidden glow-effect" data-target="goal-3">
+                            <!-- Accordion Item 3 -->
+                            <div class="accordion-item bg-gray-50 rounded-lg overflow-hidden glow-effect" data-target="goal-3">
                                 <button class="accordion-header w-full flex justify-between items-center p-4 text-left font-bold text-be-accent hover:bg-gray-100 transition duration-150" aria-expanded="false" aria-controls="goal-3-content">
                                     <span>Key Milestone: High Occupancy</span>
                                     <svg class="w-5 h-5 transition-transform duration-300 transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -522,14 +799,15 @@
                         </div>
                     </div>
                     <div class="hidden lg:block scroll-animate">
-                         <img src="https://ik.imagekit.io/vgflfdcic/Screenshot%202025-11-02%20152843.png" alt="Benny Empire Luxury Apartment Interior" class="rounded-xl shadow-2xl h-full w-full object-cover">
+                         <img src="https://ik.imagekit.io/vgflfdcic/Screenshot%202025-11-02%20152843.png" alt="Benny Empire Office" class="rounded-xl shadow-2xl h-full w-full object-cover">
                     </div>
                 </div>
             </div>
         </section>
 
 
-        <!-- Amenities / Standard of Excellence (Off-White Background) --><section id="amenities" class="py-16 sm:py-24 bg-be-light">
+        <!-- Amenities Section -->
+        <section id="amenities" class="py-16 sm:py-24 bg-be-light">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-4xl font-extrabold text-center mb-16 section-header scroll-animate">Our Standard of Excellence</h2>
                 
@@ -562,13 +840,15 @@
             </div>
         </section>
         
-        <!-- Customer Success Stories (Testimonials) (White Background for contrast) --><section id="testimonials" class="py-16 sm:py-24 bg-white">
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-16 sm:py-24 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-4xl font-extrabold text-center mb-16 section-header scroll-animate">What Our Guests Say</h2>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     
-                    <!-- Testimonial 1 --><div class="bg-white p-8 rounded-xl card-shadow border-t-4 border-be-accent card-hover-dynamic scroll-animate">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-white p-8 rounded-xl card-shadow border-t-4 border-be-accent card-hover-dynamic scroll-animate">
                         <div class="text-be-accent mb-4">
                             <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 14h-2a2 2 0 01-2-2V7h4v5a2 2 0 01-2 2zm-2 5a1 1 0 100 2h2a1 1 0 100-2h-2zM4 6a1 1 0 011-1h14a1 1 0 110 2H5a1 1 0 01-1-1zm0 8a1 1 0 011-1h14a1 1 0 110 2H5a1 1 0 01-1-1z"></path></svg>
                         </div>
@@ -576,372 +856,300 @@
                         <p class="font-bold text-be-dark">- Mr. David E., <span class="text-sm text-gray-500">Lagos Business Traveler</span></p>
                     </div>
 
-                    <!-- Testimonial 2 --><div class="bg-white p-8 rounded-xl card-shadow border-t-4 border-be-accent card-hover-dynamic scroll-animate">
+                    <!-- Testimonial 2 -->
+                    <div class="bg-white p-8 rounded-xl card-shadow border-t-4 border-be-accent card-hover-dynamic scroll-animate">
                         <div class="text-be-accent mb-4">
                             <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 14h-2a2 2 0 01-2-2V7h4v5a2 2 0 01-2 2zm-2 5a1 1 0 100 2h2a1 1 0 100-2h-2zM4 6a1 1 0 011-1h14a1 1 0 110 2H5a1 1 0 01-1-1zm0 8a1 1 0 011-1h14a1 1 0 110 2H5a1 1 0 01-1-1z"></path></svg>
                         </div>
-                        <p class="text-gray-700 italic mb-6 text-base">"Perfect blend of luxury and security. Our Abuja booking delivered on every promise: the security was impeccable, and the apartment was tastefully furnished."</p>
-                        <p class="font-bold text-be-dark">- Mrs. Halima M., <span class="text-sm text-gray-500">Abuja Resident</span></p>
+                        <p class="text-gray-700 italic mb-6 text-base">"Benny Empire delivered beyond expectations in Abuja. The apartment was pristine, the location perfect, and the service top-notch. Highly recommend for luxury stays."</p>
+                        <p class="font-bold text-be-dark">- Dr. Aisha B., <span class="text-sm text-gray-500">Abuja Diplomat</span></p>
                     </div>
 
-                    <!-- Testimonial 3 --><div class="bg-white p-8 rounded-xl card-shadow border-t-4 border-be-accent card-hover-dynamic scroll-animate">
+                    <!-- Testimonial 3 -->
+                    <div class="bg-white p-8 rounded-xl card-shadow border-t-4 border-be-accent card-hover-dynamic scroll-animate">
                         <div class="text-be-accent mb-4">
                             <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 14h-2a2 2 0 01-2-2V7h4v5a2 2 0 01-2 2zm-2 5a1 1 0 100 2h2a1 1 0 100-2h-2zM4 6a1 1 0 011-1h14a1 1 0 110 2H5a1 1 0 01-1-1zm0 8a1 1 0 011-1h14a1 1 0 110 2H5a1 1 0 01-1-1z"></path></svg>
                         </div>
-                        <p class="text-gray-700 italic mb-6 text-base">"Exceptional value and prime location. For the price, the value provided—especially the consistent air conditioning and clean water supply—is unbeatable."</p>
-                        <p class="font-bold text-be-dark">- Dr. Kinsley O., <span class="text-sm text-gray-500">Ibadan Visitor</span></p>
+                        <p class="text-gray-700 italic mb-6 text-base">"Our family vacation in Ibadan was made perfect by Benny Empire. Spacious, clean, and every amenity we needed. The kids loved it, and so did we!"</p>
+                        <p class="font-bold text-be-dark">- Mrs. Nkechi O., <span class="text-sm text-gray-500">Ibadan Family Vacationer</span></p>
                     </div>
 
                 </div>
             </div>
         </section>
 
-        <!-- Call to Action Banner (Gold Background) --><section class="bg-be-accent py-12">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left scroll-animate">
-                <h3 class="text-3xl font-extrabold text-white mb-4 md:mb-0">
-                    Lock in Your Premium Dates.
-                </h3>
-                <a href="tel:+2348104863579" class="inline-flex items-center justify-center px-8 py-3 border border-white text-base font-semibold rounded-lg text-be-accent bg-white hover:bg-gray-100 transition duration-300 transform hover:scale-105">
-                    RESERVE NOW
-                </a>
-            </div>
-        </section>
+        <!-- Contact Form Section -->
+        <section id="contact-form" class="py-16 sm:py-24 bg-be-light">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center scroll-animate">
+                <h2 class="text-4xl font-extrabold text-be-dark mb-6 section-header">Ready for Your Elite Stay?</h2>
+                <p class="text-xl text-gray-700 mb-10">
+                    Connect with us today to find the perfect luxury shortlet for your next visit to Lagos, Abuja, or Ibadan.
+                </p>
 
-        <!-- Contact Form (Off-White Background) --><section id="contact-form" class="py-16 sm:py-24 bg-be-light">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl font-extrabold text-center mb-16 section-header scroll-animate">Book Your Stay</h2>
-                
-                <form id="booking-form" class="bg-white p-8 md:p-12 rounded-xl card-shadow border border-gray-100 scroll-animate">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-8 sm:p-10 rounded-xl card-shadow border border-gray-100 max-w-2xl mx-auto">
+                    <form class="space-y-6">
                         <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent">
+                            <label for="full-name" class="sr-only">Full Name</label>
+                            <input type="text" id="full-name" placeholder="Your Full Name" class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent" required>
                         </div>
                         <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent">
+                            <label for="email" class="sr-only">Email Address</label>
+                            <input type="email" id="email" placeholder="Your Email Address" class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent" required>
                         </div>
                         <div>
-                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent" value="+234">
+                            <label for="phone" class="sr-only">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="Your Phone Number" class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent">
                         </div>
                         <div>
-                            <label for="city" class="block text-sm font-medium text-gray-700 mb-1">Preferred City</label>
-                            <select id="city" name="city" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent">
-                                <option value="">Select City</option>
-                                <option value="Lagos">Lagos</option>
-                                <option value="Abuja">Abuja</option>
-                                <option value="Ibadan">Ibadan</option>
-                            </select>
+                            <label for="message" class="sr-only">Message</label>
+                            <textarea id="message" rows="5" placeholder="Tell us about your requirements (e.g., city, dates, number of guests)" class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent" required></textarea>
                         </div>
-                        <div>
-                            <label for="area" class="block text-sm font-medium text-gray-700 mb-1">Area / Neighborhood</label>
-                            <select id="area" name="area" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent" disabled>
-                                <option value="">Select City First</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="budget" class="block text-sm font-medium text-gray-700 mb-1">Budget Range (₦/Day)</label>
-                            <select id="budget" name="budget" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent">
-                                <option value="">Select Range</option>
-                                <option value="20k-50k">₦20,000 - ₦50,000</option>
-                                <option value="50k-100k">₦50,000 - ₦100,000</option>
-                                <option value="100k+">₦100,000+</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="arrival" class="block text-sm font-medium text-gray-700 mb-1">Arrival Date</label>
-                            <input type="date" id="arrival" name="arrival" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent">
-                        </div>
-                        <div>
-                            <label for="departure" class="block text-sm font-medium text-gray-700 mb-1">Departure Date</label>
-                            <input type="date" id="departure" name="departure" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent">
-                        </div>
-                    </div>
-                    <div class="mt-6">
-                        <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Additional Notes / Requirements</label>
-                        <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent"></textarea>
-                    </div>
-                    <div class="mt-8 text-center">
-                        <button type="submit" class="w-full md:w-auto px-10 py-3 text-lg font-bold rounded-lg text-white bg-be-accent hover:bg-opacity-90 transition duration-300 shadow-lg transform hover:scale-105">
-                            Submit Booking Inquiry
+                        <button type="submit" class="w-full px-6 py-3 border border-transparent text-lg font-bold rounded-lg shadow-md text-white bg-be-accent hover:bg-opacity-90 transition duration-300 transform hover:scale-105">
+                            Send Inquiry
                         </button>
-                    </div>
-                </form>
-                
-                <!-- Submission Message Container (Used instead of alert()) --><div id="form-message" class="mt-4 p-4 text-center rounded-lg hidden"></div>
-                
-                <p class="text-center text-sm text-gray-500 mt-6 scroll-animate">
-                    <span class="font-semibold">Need immediate assistance?</span> Call us at <a href="tel:+2348104863579" class="text-be-accent hover:underline">+234 810 486 3579</a> or chat on WhatsApp.
-                </Two-Bedroom>
+                    </form>
+                    <p class="text-sm text-gray-500 mt-6">
+                        Alternatively, reach us directly: <a href="tel:+2348104863579" class="text-be-accent hover:underline">+234 810 486 3579</a> or <a href="mailto:info@bennyempire.com" class="text-be-accent hover:underline">info@bennyempire.com</a>
+                    </p>
+                </div>
             </div>
         </section>
 
     </main>
 
-    <!-- Footer (Dark/Black Background) --><footer id="contact" class="bg-be-dark py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-
-                <!-- Brand Info --><div class="col-span-1 md:col-span-2">
-                    <h4 class="text-2xl font-bold text-white mb-4">Benny <span class="text-be-accent">Empire</span></h4>
-                    <p class="text-gray-400 mb-4 text-sm">
-                        Providing top-tier luxury shortlet apartments across Nigeria. Your comfort and security is our highest priority.
-                    </p>
-                </div>
-
-                <!-- Quick Links --><div>
-                    <h4 class="text-lg font-bold mb-4 text-be-light">Quick Links</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#locations" class="text-gray-400 hover:text-be-accent transition">Our Cities</a></li>
-                        <li><a href="#featured" class="text-gray-400 hover:text-be-accent transition">View Apartments</a></li>
-                        <li><a href="#about-us" class="text-gray-400 hover:text-be-accent transition">About Us</a></li>
-                        <li><a href="#testimonials" class="text-gray-400 hover:text-be-accent transition">Stories</a></li>
-                    </ul>
-                </div>
-
-                <!-- Get in Touch --><div>
-                    <h4 class="text-lg font-bold mb-4 text-be-light">Get in Touch</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li class="text-gray-400">
-                            <span class="text-be-accent font-medium">Phone:</span> <a href="tel:+2348104863579" class="hover:text-be-accent transition">+234 810 486 3579</a>
-                        </li>
-                        <li class="text-gray-400">
-                            <span class="text-be-accent font-medium">Email:</span> <a href="mailto:bennyhomesofficial@gmail.com" class="hover:text-be-accent transition">bennyhomesofficial@gmail.com</a>
-                        </li>
-                        <li class="flex space-x-3 mt-4">
-                            <!-- Instagram Icon --><a href="https://www.instagram.com/benny__empire" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-be-accent transition" aria-label="Instagram">
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.77 1.636 4.98 4.67.12 1.701.171 2.291.171 4.59 0 2.3-.051 2.89-.171 4.59-.21 3.034-1.728 4.522-4.98 4.67-1.266.058-1.646.07-4.85.07s-3.583-.012-4.85-.07c-3.251-.148-4.77-1.636-4.98-4.67-.12-1.701-.171-2.291-.171-4.59s.051-2.89.171-4.59c.21-3.034 1.729-4.522 4.98-4.67 1.267-.058 1.647-.07 4.85-.07zm0 1.84a4.5 4.5 0 100 9 4.5 4.5 0 000-9zm6.204-5.352c-.752 0-1.36.608-1.36 1.36s.608 1.36 1.36 1.36 1.36-.608 1.36-1.36-.608-1.36-1.36-1.36z"></path></svg>
-                            </a>
-                            <!-- WhatsApp Icon --><a href="https://wa.me/2348104863579" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-be-accent transition" aria-label="WhatsApp">
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.7.44 3.3.44 3.3l-1.07 3.92 4.01-1.05c0 0 1.5.38 3.01.81 1.71.43 3.49.65 5.5.65 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zM12.04 19.5c-1.46 0-3-.38-4.43-1.09l-.32-.19-3.32.87.89-3.25-.22-.34c-1.1-1.74-1.74-3.77-1.74-5.87 0-4.66 3.79-8.45 8.45-8.45 4.66 0 8.45 3.79 8.45 8.45 0 4.66-3.79 8.45-8.45 8.45h.01zM17.07 14.84c-.24-.12-1.42-.7-1.65-.79-.22-.12-.39-.17-.56.12-.17.29-.65.79-.8 1.2-.17.41-.33.45-.6.3-.24-.12-1.02-.4-1.95-1.19-.74-.6-1.24-1.35-1.65-2.09-.41-.74-.04-1.16.29-1.46.12-.12.24-.26.37-.39.12-.12.17-.22.28-.42.12-.19.06-.39-.02-.56-.12-.17-.56-1.42-.77-1.93-.19-.48-.39-.41-.56-.41h-.44c-.17 0-.41.06-.63.26-.22.24-.84.82-.84 2.01 0 1.19.86 2.33.98 2.59.12.26 1.73 2.65 4.19 3.65 2.21.92 2.66.78 3.12.73.46-.05 1.25-.51 1.42-.99.17-.48.17-.92.12-1.04-.04-.12-.17-.18-.36-.26z"/></svg>
-                            </a>
-                        </li>
-                    </ul>
+    <!-- Footer -->
+    <footer class="bg-be-dark text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+            
+            <!-- Footer: About -->
+            <div class="md:col-span-2">
+                <a href="#" class="text-4xl font-bold tracking-tight mb-4 block">
+                    Benny <span class="text-be-accent">Empire</span>
+                </a>
+                <p class="text-gray-400 text-sm mb-4">
+                    Your premier partner for luxury shortlet apartments in Nigeria. Experience comfort, security, and exceptional service.
+                </p>
+                <div class="flex space-x-4 mt-6">
+                    <a href="#" class="text-gray-400 hover:text-be-accent transition duration-300"><img src="https://placehold.co/24x24/171717/C29F5F?text=F" alt="Facebook" class="w-6 h-6"></a>
+                    <a href="#" class="text-gray-400 hover:text-be-accent transition duration-300"><img src="https://placehold.co/24x24/171717/C29F5F?text=X" alt="Twitter" class="w-6 h-6"></a>
+                    <a href="#" class="text-gray-400 hover:text-be-accent transition duration-300"><img src="https://placehold.co/24x24/171717/C29F5F?text=I" alt="Instagram" class="w-6 h-6"></a>
                 </div>
             </div>
 
-            <div class="mt-12 pt-6 border-t border-gray-800 text-center">
-                <p class="text-sm text-gray-600">&copy; 2024 Benny Empire. All rights reserved.</p>
+            <!-- Footer: Quick Links -->
+            <div class="md:col-span-1">
+                <h3 class="text-lg font-semibold text-be-accent mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="#locations" class="text-gray-400 hover:text-white transition duration-300 text-sm">Our Locations</a></li>
+                    <li><a href="#featured" class="text-gray-400 hover:text-white transition duration-300 text-sm">View Apartments</a></li>
+                    <li><a href="#about-us" class="text-gray-400 hover:text-white transition duration-3Click on "Preview" to see all the changes we've made.0 text-sm">About Us</a></li>
+                    <li><a href="#testimonials" class="text-gray-400 hover:text-white transition duration-300 text-sm">Guest Stories</a></li>
+                </ul>
             </div>
+
+            <!-- Footer: Contact -->
+            <div class="md:col-span-1">
+                <h3 class="text-lg font-semibold text-be-accent mb-4">Contact Us</h3>
+                <ul class="space-y-2 text-sm">
+                    <li class="flex items-center">
+                        <svg class="w-4 h-4 mr-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+                        <span class="text-gray-400">Nigeria (Lagos, Abuja, Ibadan)</span>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-4 h-4 mr-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-7A8 8 0 012 10V3z"></path></svg>
+                        <a href="tel:+2348104863579" class="text-gray-400 hover:text-white transition duration-300">+234 810 486 3579</a>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-4 h-4 mr-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                        <a href="mailto:info@bennyempire.com" class="text-gray-400 hover:text-white transition duration-300">info@bennyempire.com</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-500">
+            &copy; <span id="current-year"></span> Benny Empire. All rights reserved.
         </div>
     </footer>
 
     <script>
-        <!-- Data structure for dynamic city/area selection -->
-        const cityAreas = {
-            Lagos: ['Ikeja', 'Lekki Phase 1', 'Ikoyi', 'Victoria Island'],
-            Abuja: ['Maitama', 'Asokoro', 'Wuse II', 'Central Area'],
-            Ibadan: ['Jericho', 'Bodija', 'Ring Road', 'Challenge']
-        };
-
-        // CAROUSEL LOGIC
-        const initializeCarousel = (containerId) => {
-            const container = document.getElementById(containerId);
-            if (container) {
-                // Select both images and videos
-                const media = container.querySelectorAll('.carousel-media');
-                if (media.length === 0) return; // No media to cycle
-
-                let currentIndex = 0;
-                let autoplay = setInterval(nextImage, 4000); // Store interval
-
-                const showMedia = (index) => {
-                    media.forEach((item, i) => {
-                        item.classList.remove('active');
-                        if (i === index) {
-                            item.classList.add('active');
-                        }
-                    });
-                };
-
-                function nextImage() {
-                    currentIndex = (currentIndex + 1) % media.length;
-                    showMedia(currentIndex);
-                };
-
-                // Find and attach listeners to nav buttons
-                const navButtons = document.querySelectorAll(`.carousel-nav[data-carousel-id="${containerId}"]`);
-                navButtons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        clearInterval(autoplay); // Stop autoplay on manual click
-                        const direction = parseInt(button.dataset.direction);
-                        // Calculate new index, wrapping around correctly
-                        currentIndex = (currentIndex + direction + media.length) % media.length;
-                        showMedia(currentIndex);
-                    });
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
                 });
-
-                // Initial show
-                showMedia(currentIndex);
-            }
-        };
-
-        // PROPERTY FILTERING LOGIC
-        const filterProperties = (city, scrollTo) => {
-            const propertyList = document.getElementById('property-list');
-            const cards = propertyList.querySelectorAll('.property-card');
-            
-            // Highlight the active city card link/area
-            document.querySelectorAll('.city-link').forEach(link => {
-                if (link.dataset.city === city) {
-                    link.classList.add('font-extrabold', 'city-filter-active');
-                } else {
-                    link.classList.remove('font-extrabold', 'city-filter-active');
-                }
             });
+        });
 
-            cards.forEach(card => {
-                const cardCity = card.getAttribute('data-city');
-                
-                if (city === 'All' || cardCity === city) {
-                    card.classList.remove('hidden');
-                } else {
-                    card.classList.add('hidden');
-                }
-            });
+        // Current Year for Footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
 
-            if (scrollTo) {
-                 // Scroll smoothly to the property list section
-                document.getElementById('featured').scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        };
+        // Carousel Functionality
+        function initializeCarousel(carouselId) {
+            const container = document.getElementById(carouselId);
+            if (!container) return; // Exit if container not found
 
-        // Dynamic Form Logic (Area/Neighborhood)
-        const updateAreaDropdown = () => {
-            const citySelect = document.getElementById('city');
-            const areaSelect = document.getElementById('area');
-            const selectedCity = citySelect.value;
+            const mediaItems = container.querySelectorAll('.carousel-media');
+            if (mediaItems.length <= 1) return; // No need for carousel if 1 or 0 items
 
-            areaSelect.innerHTML = '<option value="">Select Area</option>';
-            areaSelect.disabled = true;
+            const prevButton = container.querySelector('.carousel-nav.prev');
+            const nextButton = container.querySelector('.carousel-nav.next');
+            let currentIndex = 0;
+            let autoPlayInterval = setInterval(showNextMedia, 4000); // Autoplay interval
 
-            if (selectedCity && cityAreas[selectedCity]) {
-                cityAreas[selectedCity].forEach(area => {
-                    const option = document.createElement('option');
-                    option.value = area;
-                    option.textContent = area;
-                    areaSelect.appendChild(option);
-                });
-                areaSelect.disabled = false;
-            }
-        };
-
-        // SCROLL ANIMATION (Intersection Observer)
-        const setupScrollAnimations = () => {
-            const elements = document.querySelectorAll('.scroll-animate');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
+            function showMedia(index) {
+                // Pause all media
+                mediaItems.forEach((item, i) => {
+                    item.classList.remove('active');
+                    if (item.tagName === 'VIDEO') {
+                        item.pause();
                     }
                 });
-            }, {
-                rootMargin: '0px',
-                threshold: 0.1 
+
+                // Show the new item
+                currentIndex = (index + mediaItems.length) % mediaItems.length;
+                const currentItem = mediaItems[currentIndex];
+                currentItem.classList.add('active');
+                
+                // Play if it's a video
+                if (currentItem.tagName === 'VIDEO') {
+                    currentItem.play().catch(e => console.log("Autoplay was prevented."));
+                }
+            }
+
+            function showNextMedia() {
+                showMedia(currentIndex + 1);
+            }
+
+            function stopAutoPlay() {
+                clearInterval(autoPlayInterval);
+            }
+
+            prevButton.addEventListener('click', () => {
+                showMedia(currentIndex - 1);
+                stopAutoPlay(); // Stop autoplay on manual navigation
             });
 
-            elements.forEach(el => observer.observe(el));
+            nextButton.addEventListener('click', () => {
+                showMedia(currentIndex + 1);
+                stopAutoPlay(); // Stop autoplay on manual navigation
+            });
+
+            // Start first media item
+            showMedia(0);
+        }
+
+        // Initialize carousels for each location and property
+        document.addEventListener('DOMContentLoaded', () => {
+            // Location carousels (if they have more than 1 image)
+            // initializeCarousel('location-lagos-carousel');
+            // initializeCarousel('location-abuja-carousel');
+            // initializeCarousel('location-ibadan-carousel');
+
+            // Property carousels
+            // initializeCarousel('property-1-carousel'); // Only 1 video
+            // initializeCarousel('property-2-carousel'); // Only 1 video
+            // initializeCarousel('property-3-carousel'); // Only 1 video
+            initializeCarousel('property-4-carousel');
+            initializeCarousel('property-5-carousel');
+            initializeCarousel('property-6-carousel');
+            initializeCarousel('property-7-carousel');
+            initializeCarousel('property-8-carousel');
+            initializeCarousel('property-9-carousel');
+            initializeCarousel('property-10-carousel');
+        });
+
+        // Intersection Observer for Scroll Animations
+        const scrollElements = document.querySelectorAll(".scroll-animate");
+
+        const elementInView = (el, dividend = 1) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (
+                elementTop <=
+                (window.innerHeight || document.documentElement.clientHeight) / dividend
+            );
         };
-        
-        // ACCORDION LOGIC
-        const setupAccordions = () => {
-             const accordionHeaders = document.querySelectorAll('.accordion-header');
-             accordionHeaders.forEach(header => {
+
+        const displayScrollElement = (element) => {
+            element.classList.add("visible");
+        };
+
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el, 1.25)) {
+                    displayScrollElement(el);
+                }
+            });
+        };
+
+        window.addEventListener("scroll", handleScrollAnimation);
+        handleScrollAnimation(); // Run on load
+
+        // City Filter Functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const cityLinks = document.querySelectorAll('.city-link');
+            const searchCitySelect = document.getElementById('search-city-select');
+            const propertyCards = document.querySelectorAll('.property-card');
+
+            cityLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const city = this.dataset.city;
+                    filterProperties(city);
+                    searchCitySelect.value = city; 
+                    document.querySelector('#featured').scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+
+            document.getElementById('search-button').addEventListener('click', () => {
+                const selectedCity = searchCitySelect.value;
+                filterProperties(selectedCity);
+                document.querySelector('#featured').scrollIntoView({ behavior: 'smooth' });
+            });
+
+            function filterProperties(city) {
+                propertyCards.forEach(card => {
+                    if (city === 'All' || card.dataset.city === city) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+
+            filterProperties(searchCitySelect.value); 
+        });
+
+        // Accordion functionality for About Us section
+        document.addEventListener('DOMContentLoaded', () => {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+            accordionHeaders.forEach(header => {
                 header.addEventListener('click', () => {
                     const accordionItem = header.closest('.accordion-item');
                     const content = accordionItem.querySelector('.accordion-content');
                     const icon = header.querySelector('svg');
 
-                    const isActive = accordionItem.classList.contains('active');
-
-                    // Close all others
-                    document.querySelectorAll('.accordion-item').forEach(item => {
-                        item.classList.remove('active');
-                        item.querySelector('.accordion-content').classList.add('hidden');
-                        item.querySelector('svg').classList.remove('rotate-180');
+                    // Close all other accordions
+                    accordionHeaders.forEach(otherHeader => {
+                        const otherItem = otherHeader.closest('.accordion-item');
+                        if (otherItem !== accordionItem) {
+                            otherItem.classList.remove('active'); // Remove glow
+                            otherItem.querySelector('.accordion-content').classList.add('hidden');
+                            otherItem.querySelector('svg').classList.remove('rotate-180');
+                        }
                     });
 
-                    // Open the clicked one if it wasn't already active
-                    if (!isActive) {
-                        accordionItem.classList.add('active');
-                        content.classList.remove('hidden');
-                        icon.classList.add('rotate-180');
-                    }
+                    // Toggle current accordion
+                    accordionItem.classList.toggle('active'); // Toggle glow
+                    content.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
                 });
             });
-        };
-
-
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            // 1. Initialize Carousels
-            initializeCarousel('lekki-cinema-carousel');
-            initializeCarousel('lekki-loft-carousel'); // <-- ADDED THIS
-            // Removed old carousel initializers
-            // Removed location carousels as they are now static images
-
-            // 2. Setup Scroll Animations
-            setupScrollAnimations();
-            
-            // 3. Setup Accordions
-            setupAccordions();
-
-            // 4. Setup City Links (Explore Listings)
-            document.querySelectorAll('.city-link').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const city = e.target.getAttribute('data-city');
-
-                    // Set the search bar to the chosen city for visual consistency
-                    document.getElementById('search-city-select').value = city;
-                    
-                    // Filter the properties and scroll to the featured section
-                    filterProperties(city, true);
-                });
-            });
-
-            // 5. Setup Search Button (Filtering)
-            document.getElementById('search-button').addEventListener('click', () => {
-                const city = document.getElementById('search-city-select').value;
-                filterProperties(city, true);
-            });
-
-            // 6. Dynamic Form Dropdown Setup
-            const citySelect = document.getElementById('city');
-            citySelect.addEventListener('change', updateAreaDropdown);
-
-
-            // 7. CONTACT FORM SUBMISSION HANDLER
-            const form = document.getElementById('booking-form');
-            const messageContainer = document.getElementById('form-message');
-
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                const formData = new FormData(form);
-                const data = Object.fromEntries(formData.entries());
-                
-                console.log('Form Submission Data:', data);
-                
-                // Show success message
-                messageContainer.classList.remove('hidden', 'bg-red-100', 'text-red-800');
-                messageContainer.classList.add('bg-green-100', 'text-green-800');
-                messageContainer.innerHTML = `<strong>Success!</strong> Inquiry for ${data.city} (${data.area}) submitted. We will contact you at ${data.email} shortly.`;
-                
-                // Reset form and re-disable area dropdown
-                form.reset();
-                document.getElementById('area').disabled = true;
-                document.getElementById('area').innerHTML = '<option value="">Select City First</option>';
-
-                // Hide the message after 5 seconds
-                setTimeout(() => {
-                    messageContainer.classList.add('hidden');
-                }, 5000);
-            });
-
         });
+
     </script>
 </body>
 </html>
