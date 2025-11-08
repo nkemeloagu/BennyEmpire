@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Benny Empire Luxury Shortlets | Lagos, Abuja, Ibadan</title>
     
-    <!-- FAVICON --><link rel="icon" href="https://ik.imagekit.io/vgflfdcic/Screenshot%202025-11-02%20152843.png" type="image/png">
+    <!-- FAVICON - Placeholder with BE text -->
+    <link rel="icon" href="https://placehold.co/32x32/C29F5F/171717?text=BE" type="image/png">
     
-    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Tailwind Config --><script>
+    <!-- Tailwind Config -->
+    <script>
         tailwind.config = {
             theme: {
                 extend: {
@@ -26,7 +29,8 @@
         }
     </script>
     
-    <!-- Custom Styles --><style>
+    <!-- Custom Styles -->
+    <style>
         /* Base styles for premium look */
         body {
             background-color: var(--tw-colors-be-light);
@@ -222,12 +226,12 @@
                     
                     <!-- Check-in/Check-out -->
                     <div class="flex-1">
-                        <label for="check-in" class="block text-sm font-medium text-gray-700 sr-only">Check-in Date</label>
-                        <input type="date" id="check-in" placeholder="Check-in" class="mt-1 block w-full pl-3 pr-3 py-3 text-base border-gray-300 rounded-lg focus:outline-none focus:ring-be-accent focus:border-be-accent sm:text-sm shadow-sm border">
+                        <label for="search-check-in" class="block text-sm font-medium text-gray-700 sr-only">Check-in Date</label>
+                        <input type="date" id="search-check-in" placeholder="Check-in" class="mt-1 block w-full pl-3 pr-3 py-3 text-base border-gray-300 rounded-lg focus:outline-none focus:ring-be-accent focus:border-be-accent sm:text-sm shadow-sm border">
                     </div>
                     <div class="flex-1">
-                        <label for="check-out" class="block text-sm font-medium text-gray-700 sr-only">Check-out Date</label>
-                        <input type="date" id="check-out" placeholder="Check-out" class="mt-1 block w-full pl-3 pr-3 py-3 text-base border-gray-300 rounded-lg focus:outline-none focus:ring-be-accent focus:border-be-accent sm:text-sm shadow-sm border">
+                        <label for="search-check-out" class="block text-sm font-medium text-gray-700 sr-only">Check-out Date</label>
+                        <input type="date" id="search-check-out" placeholder="Check-out" class="mt-1 block w-full pl-3 pr-3 py-3 text-base border-gray-300 rounded-lg focus:outline-none focus:ring-be-accent focus:border-be-accent sm:text-sm shadow-sm border">
                     </div>
                     <button id="search-button" class="w-full md:w-auto px-8 py-3 text-base font-bold rounded-lg text-white bg-be-accent hover:bg-opacity-90 transition duration-300 shadow-lg transform hover:scale-105">
                         Search Now
@@ -509,7 +513,7 @@
                             <img data-media-index="9" src="https://ik.imagekit.io/vgflfdcic/Lagos6/IMG-20251107-WA0024.jpg" class="carousel-media" alt="Periwinkle Residence">
                             <img data-media-index="10" src="https://ik.imagekit.io/vgflfdcic/Lagos6/IMG-20251107-WA0022.jpg" class="carousel-media" alt="Periwinkle Residence">
                             <img data-media-index="11" src="https://ik.imagekit.io/vgflfdcic/Lagos6/IMG-20251107-WA0021.jpg" class="carousel-media" alt="Periwinkle Residence">
-                            <img data-media-index="12" src="https://ik.imagekit.io/vgflfdcic/Lagos6/IMG-20251107-WA0013.jpg" class="carousel-media" alt="Periwinkle Residence">
+                            <img data-media-index="12" src="httpsD/vgflfdcic/Lagos6/IMG-20251107-WA0013.jpg" class="carousel-media" alt="Periwinkle Residence">
                             <img data-media-index="13" src="https://ik.imagekit.io/vgflfdcic/Lagos6/IMG-20251107-WA0012.jpg" class="carousel-media" alt="Periwinkle Residence">
                             <img data-media-index="14" src="https://ik.imagekit.io/vgflfdcic/Lagos6/IMG-20251107-WA0019.jpg" class="carousel-media" alt="Periwinkle Residence">
                             <img data-media-index="15" src="https://ik.imagekit.io/vgflfdcic/Lagos6/IMG-20251107-WA0020.jpg" class="carousel-media" alt="Periwinkle Residence">
@@ -737,8 +741,9 @@
 
                 </div>
                 
+                <!-- "View All Listings" button now links to #featured -->
                 <div class="text-center mt-16 scroll-animate">
-                     <a href="#contact-form" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-lg font-semibold rounded-lg shadow-lg text-white bg-be-accent hover:bg-opacity-80 transition duration-300 transform hover:scale-105">
+                     <a href="#featured" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-lg font-semibold rounded-lg shadow-lg text-white bg-be-accent hover:bg-opacity-80 transition duration-300 transform hover:scale-105">
                         View All Listings
                     </a>
                 </div>
@@ -886,29 +891,62 @@
                     Connect with us today to find the perfect luxury shortlet for your next visit to Lagos, Abuja, or Ibadan.
                 </p>
 
-                <div class="bg-white p-8 sm:p-10 rounded-xl card-shadow border border-gray-100 max-w-2xl mx-auto">
+                <!-- NEW DETAILED FORM -->
+                <div class="bg-white p-8 sm:p-10 rounded-xl card-shadow border border-gray-100 max-w-2xl mx-auto text-left">
                     <form class="space-y-6">
-                        <div>
-                            <label for="full-name" class="sr-only">Full Name</label>
-                            <input type="text" id="full-name" placeholder="Your Full Name" class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent" required>
+                        
+                        <!-- Check-in & Check-out -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="checkin" class="block text-sm font-medium text-gray-700 mb-1">Check-in Date</label>
+                                <input type="date" id="checkin" class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent" required>
+                            </div>
+                            <div>
+                                <label for="checkout" class="block text-sm font-medium text-gray-700 mb-1">Check-out Date</label>
+                                <input type="date" id="checkout" class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent" required>
+                            </div>
                         </div>
-                        <div>
-                            <label for="email" class="sr-only">Email Address</label>
-                            <input type="email" id="email" placeholder="Your Email Address" class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent" required>
+
+                        <!-- City & Area -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="city-preferred" class="block text-sm font-medium text-gray-700 mb-1">City Preferred</label>
+                                <select id="city-preferred" class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent bg-white">
+                                    <option>Lagos</option>
+                                    <option>Abuja</option>
+                                    <option>Ibadan</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="city-section" class="block text-sm font-medium text-gray-700 mb-1">Section of City (e.g., Lekki, Festac)</label>
+                                <input type="text" id="city-section" placeholder="e.g., Lekki, Ikoyi, Wuse II" class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent">
+                            </div>
                         </div>
-                        <div>
-                            <label for="phone" class="sr-only">Phone Number</label>
-                            <input type="tel" id="phone" placeholder="Your Phone Number" class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent">
+
+                        <!-- Guests & Budget -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="guests" class="block text-sm font-medium text-gray-700 mb-1">Number of Guests</label>
+                                <input type="number" id="guests" placeholder="e.g., 2" class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent" min="1">
+                            </div>
+                            <div>
+                                <label for="budget" class="block text-sm font-medium text-gray-700 mb-1">Budget (per night, in ₦)</label>
+                                <input type="text" id="budget" placeholder="e.g., 150,000" class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent">
+                            </div>
                         </div>
+
+                        <!-- Other Information -->
                         <div>
-                            <label for="message" class="sr-only">Message</label>
-                            <textarea id="message" rows="5" placeholder="Tell us about your requirements (e.g., city, dates, number of guests)" class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent" required></textarea>
+                            <label for="other-info" class="block text-sm font-medium text-gray-700 mb-1">Any Other Information</label>
+                            <textarea id="other-info" rows="5" placeholder="Tell us about any special requirements (e.g., PS5, swimming pool, specific location)" class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-be-accent focus:border-be-accent"></textarea>
                         </div>
+                        
+                        <!-- Submit Button -->
                         <button type="submit" class="w-full px-6 py-3 border border-transparent text-lg font-bold rounded-lg shadow-md text-white bg-be-accent hover:bg-opacity-90 transition duration-300 transform hover:scale-105">
                             Send Inquiry
                         </button>
                     </form>
-                    <p class="text-sm text-gray-500 mt-6">
+                    <p class="text-sm text-gray-500 mt-6 text-center">
                         Alternatively, reach us directly: <a href="tel:+2348104863579" class="text-be-accent hover:underline">+234 810 486 3579</a> or <a href="mailto:info@bennyempire.com" class="text-be-accent hover:underline">info@bennyempire.com</a>
                     </p>
                 </div>
@@ -942,7 +980,7 @@
                 <ul class="space-y-2">
                     <li><a href="#locations" class="text-gray-400 hover:text-white transition duration-300 text-sm">Our Locations</a></li>
                     <li><a href="#featured" class="text-gray-400 hover:text-white transition duration-300 text-sm">View Apartments</a></li>
-                    <li><a href="#about-us" class="text-gray-400 hover:text-white transition duration-3Click on "Preview" to see all the changes we've made.0 text-sm">About Us</a></li>
+                    <li><a href="#about-us" class="text-gray-400 hover:text-white transition duration-300 text-sm">About Us</a></li>
                     <li><a href="#testimonials" class="text-gray-400 hover:text-white transition duration-300 text-sm">Guest Stories</a></li>
                 </ul>
             </div>
